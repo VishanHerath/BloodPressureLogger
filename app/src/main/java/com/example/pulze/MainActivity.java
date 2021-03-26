@@ -1,5 +1,6 @@
 package com.example.pulze;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer);
         NavigationView navigationView = findViewById(R.id.nav_main);
         //Set Toolbar as ActionBar
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
         //Setup Navigation Drawer
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
@@ -52,9 +53,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                animation = AnimationUtils.loadAnimation(getApplicationContext(),
-                        R.anim.fab_close);
-                v.startAnimation(animation);
+                BottomSheetDialog bottomSheet = new BottomSheetDialog();
+                bottomSheet.show(getSupportFragmentManager(),
+                        "ModalBottomSheet");
+//                Intent settings = new Intent(MainActivity.this,AddDataActivity.class);
+//                startActivity(settings);
             }
         });
     }

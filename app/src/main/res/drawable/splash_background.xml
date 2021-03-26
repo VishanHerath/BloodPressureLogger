@@ -7,7 +7,7 @@
         android:gravity="center">
         <bitmap android:src="@drawable/ic_logo" />
     </item>
-    <item android:top="500dp">
+    <item android:top="450dp">
         <bitmap
             android:gravity="center"
             android:src="@drawable/icon_text"

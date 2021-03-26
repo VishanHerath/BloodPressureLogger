@@ -24,7 +24,7 @@
                 android:layout_margin="4dp"
                 android:background="@drawable/toolbar_background"
                 android:elevation="4dp"
-                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:layout_scrollFlags="enterAlways|snap"
                 app:menu="@menu/top_app_bar"
                 app:navigationIcon="@drawable/ic_baseline_menu_24"
                 app:title="@string/app_name"
@@ -37,8 +37,7 @@
         <androidx.core.widget.NestedScrollView
             android:id="@+id/mainScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="112dp"
+            android:layout_height="wrap_content"
             android:fillViewport="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 

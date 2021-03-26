@@ -6,7 +6,7 @@
         <item
             android:id="@+id/item1"
             android:icon="@drawable/ic_baseline_add_24"
-            android:title="@string/app_name"
+            android:title="@string/home"
             android:checked="true" />
         <item
             android:id="@+id/item2"
@@ -33,7 +33,7 @@
                 <item
                     android:id="@+id/item5"
                     android:icon="@drawable/ic_baseline_add_24"
-                    android:title="Item 5" />
+                    android:title="@string/settings" />
 
             </menu>
         </item>
