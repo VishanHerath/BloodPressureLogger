@@ -19,8 +19,6 @@
     <style name="SplashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/white</item>
         <item name="colorOnPrimary">@color/grey</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="android:statusBarColor" tools:targetApi="l">@color/primaryColor</item>
     </style>

@@ -10,7 +10,7 @@
     <item android:top="500dp">
         <bitmap
             android:gravity="center"
-            android:tint="?colorOnPrimary"
-            android:src="@drawable/icon_text"/>
+            android:src="@drawable/icon_text"
+            android:tint="?colorOnPrimary" />
     </item>
 </layer-list>
