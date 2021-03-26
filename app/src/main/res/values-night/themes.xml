@@ -3,11 +3,11 @@
     <style name="Theme.Pulze" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:fontFamily">@font/product_sans</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primaryDarkColor</item>
+        <item name="colorPrimary">@color/primaryLightColor</item>
         <item name="colorPrimaryVariant">@color/primaryColor</item>
         <item name="colorOnPrimary">@color/primaryTextColor</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondaryDarkColor</item>
+        <item name="colorSecondary">@color/secondaryLightColor</item>
         <item name="colorSecondaryVariant">@color/black</item>
         <item name="colorOnSecondary">@color/secondaryTextColor</item>
         <!-- Status bar color. -->
