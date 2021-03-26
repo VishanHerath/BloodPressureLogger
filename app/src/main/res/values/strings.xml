@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Pulze</string>
     <string name="home">Home</string>
+    <string name="fab_content_desc">Add</string>
+    <string name="add">ADD</string>
+    <string name="slogan">Group 2</string>
+    <string name="openNavDrawer">Open</string>
+    <string name="closeNavDrawer">Close</string>
 </resources>
