@@ -1,5 +1,6 @@
 package lk.kdu.pulze;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +19,7 @@ import com.kdu.pulze.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ExtendedFloatingActionButton floatingActionButton;
-    MaterialToolbar toolbar;
+    private MaterialToolbar materialToolbar;
     private DrawerLayout drawerLayout;
     private Animation animation;
 
@@ -27,8 +28,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         floatingActionButton = findViewById(R.id.extended_fab);
-        toolbar = findViewById(R.id.topAppBar);
         drawerLayout = findViewById(R.id.drawer);
+        materialToolbar = findViewById(R.id.topAppBar);
+        setSupportActionBar(materialToolbar);
         NavigationView navigationView = findViewById(R.id.nav_main);
         //Set Toolbar as ActionBar
 //        setSupportActionBar(toolbar);
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
-                toolbar,
+                materialToolbar,
                 R.string.openNavDrawer,
                 R.string.closeNavDrawer
         );
@@ -64,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         if (item.getItemId() == R.id.item1) {
             Toast.makeText(getApplicationContext(), "Clicked Item 1", Toast.LENGTH_LONG).show();
+        }
+        if (item.getItemId() == R.id.item3) {
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
         }
         //close navigation drawer
         drawerLayout.closeDrawers();

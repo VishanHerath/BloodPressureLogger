@@ -43,6 +43,8 @@
 
             <!-- Scrollable content -->
 
+            <include layout="@layout/content_main"/>
+
 
         </androidx.core.widget.NestedScrollView>
 

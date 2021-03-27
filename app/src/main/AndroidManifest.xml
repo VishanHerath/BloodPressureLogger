@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pulze">
         <activity
+            android:parentActivityName="lk.kdu.pulze.MainActivity"
             android:name="lk.kdu.pulze.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity

@@ -20,6 +20,7 @@
     <PreferenceCategory app:title="@string/sync_header">
 
         <SwitchPreferenceCompat
+            app:icon="@drawable/ic_baseline_brightness_4_24"
             app:key="sync"
             app:title="@string/sync_title" />
 
