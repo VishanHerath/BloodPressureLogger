@@ -51,7 +51,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/textLabel"
-
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -91,6 +91,7 @@
         android:id="@+id/pick_date_btn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="@+id/menu"
         app:layout_constraintStart_toStartOf="@+id/menu"
         app:layout_constraintTop_toBottomOf="@+id/menu"
