@@ -1,4 +1,4 @@
-package com.example.pulze;
+package lk.kdu.pulze;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

@@ -1,4 +1,4 @@
-package com.example.pulze;
+package lk.kdu.pulze;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -16,7 +16,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

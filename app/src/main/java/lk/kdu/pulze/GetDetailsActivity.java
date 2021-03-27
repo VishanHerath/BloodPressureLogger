@@ -1,4 +1,4 @@
-package com.example.pulze;
+package lk.kdu.pulze;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
