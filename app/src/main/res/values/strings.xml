@@ -46,4 +46,7 @@
     <string name="systole">Systole</string>
     <string name="mmhg">mmHg</string>
     <string name="diastole">Diastole</string>
+    <string name="mmHg">mmHg</string>
+    <string name="statistics">Statistics</string>
+    <string name="next">Next</string>
 </resources>

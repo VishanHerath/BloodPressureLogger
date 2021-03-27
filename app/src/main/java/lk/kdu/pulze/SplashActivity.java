@@ -32,14 +32,15 @@ public class SplashActivity extends AppCompatActivity {
                     sleep(SPLASH_TIME_OUT);
                     // After 5 seconds redirect to another intent
 
+                    startActivity(new Intent(SplashActivity.this, ViewPagerActivity.class));
 
-                    // Check if we need to display our OnboardingSupportFragment
-                    if (!sharedPreferences.getBoolean("flag", false)) {
-                        startActivity(new Intent(SplashActivity.this, ViewPagerActivity.class));
-                    }
-                    else{
-                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                    }
+//                    // Check if we need to display our OnBoardingSupportFragment
+//                    if (!sharedPreferences.getBoolean("flag", false)) {
+//                        startActivity(new Intent(SplashActivity.this, ViewPagerActivity.class));
+//                    }
+//                    else{
+//                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+//                    }
 
                     //Remove activity
                     finish();
