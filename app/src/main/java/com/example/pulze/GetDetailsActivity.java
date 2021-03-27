@@ -2,20 +2,28 @@ package com.example.pulze;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
-
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class GetDetailsActivity extends AppCompatActivity {
-    private Button mPickDateButton;
 
+    private Button mPickDateButton;
+    private AutoCompleteTextView gender_list;
     private TextView mShowSelectedDateText;
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,13 +82,46 @@ public class GetDetailsActivity extends AppCompatActivity {
                     }
                 });
 
-        Button btn = (Button)findViewById(R.id.startBtn);
+        TextInputEditText name = findViewById(R.id.outlinedEditTextField);
+        AutoCompleteTextView gender=findViewById(R.id.gender_list);
+        Button getDate =findViewById(R.id.pick_date_btn);
+
+        Button btn = findViewById(R.id.startBtn);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                SharedPreferences.Editor editor = preferences.edit();
+                String n  = name.getText().toString();
+                String g  = gender.getText().toString();
+                String d  = getDate.getText().toString();
+
+                editor.putString("Name", n);
+                editor.putString("Gender", g);
+                editor.putString("Birthday", d);
+                editor.apply();
+
                 startActivity(new Intent(GetDetailsActivity.this, MainActivity.class));
             }
         });
+
+        //gender items
+        createList();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private void createList(){
+
+        gender_list = findViewById(R.id.gender_list);
+
+        String[] gender_option = {"Male", "Female"};
+
+        //Creating the instance of ArrayAdapter containing list of fruit names
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, R.layout.gender_list_item, gender_option);
+        gender_list.setText(adapter.getItem(0).toString(),false);
+        gender_list.setAdapter(adapter);
     }
 }
