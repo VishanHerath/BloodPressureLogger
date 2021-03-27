@@ -28,7 +28,6 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class    BottomSheetDialog extends BottomSheetDialogFragment {
     private Button date_picker;
-    private TextView selectedDate;
     private TextInputEditText systole,diastole;
 
     @Override
@@ -36,7 +35,6 @@ public class    BottomSheetDialog extends BottomSheetDialogFragment {
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.bottom_sheet_layout,
                 container, false);
-        selectedDate = v.findViewById(R.id.date_text);
         date_picker = v.findViewById(R.id.date_picker);
         systole = v.findViewById(R.id.systole);
         diastole = v.findViewById(R.id.diastole);
@@ -80,7 +78,7 @@ public class    BottomSheetDialog extends BottomSheetDialogFragment {
                                 // if the user clicks on the positive
                                 // button that is ok button update the
                                 // selected date
-                                selectedDate.setText(materialDatePicker.getHeaderText());
+                                date_picker.setText(materialDatePicker.getHeaderText());
                                 // in the above statement, getHeaderText
                                 // will return selected date preview from the
                                 // dialog
