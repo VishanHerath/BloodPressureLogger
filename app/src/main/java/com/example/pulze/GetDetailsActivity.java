@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class GetDetailsActivity extends AppCompatActivity {
 
@@ -83,6 +84,7 @@ public class GetDetailsActivity extends AppCompatActivity {
                 });
 
         TextInputEditText name = findViewById(R.id.outlinedEditTextField);
+        TextInputLayout namelayout = findViewById(R.id.outlinedTextField);
         AutoCompleteTextView gender=findViewById(R.id.gender_list);
         Button getDate =findViewById(R.id.pick_date_btn);
 
@@ -96,17 +98,25 @@ public class GetDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
+                    if(name.getText().length()==0){
+                        namelayout.requestFocus();
+                        namelayout.setError("Please enter your name");
+                    }
+                    if(getDate.getText().equals("Select Birthday")){
+                        getDate.setError("Please enter your birthday");
+                    }
+                    else{
+                        namelayout.setError(null);
+                        getDate.setError(null);
+                        String n  = name.getText().toString();
+                        String g  = gender.getText().toString();
+                        String d  = getDate.getText().toString();
 
-                    String n  = name.getText().toString();
-                    String g  = gender.getText().toString();
-                    String d  = getDate.getText().toString();
-
-                    preferences.putString("Name", n);
-                    preferences.putString("Gender", g);
-                    preferences.putString("Birthday", d);
-                    preferences.apply();
-
-
+                        preferences.putString("Name", n);
+                        preferences.putString("Gender", g);
+                        preferences.putString("Birthday", d);
+                        preferences.apply();
+                    }
                 }
                 catch(Exception ex){
                     ex.toString();
@@ -117,7 +127,6 @@ public class GetDetailsActivity extends AppCompatActivity {
                     sharedPreferencesEditor.putBoolean("flag", true);
                     sharedPreferencesEditor.apply();
                 }
-
             }
         });
 
