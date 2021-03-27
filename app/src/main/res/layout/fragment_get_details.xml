@@ -51,17 +51,19 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/textLabel"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/outlinedEditTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
         />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,6 +80,7 @@
         android:layout_marginTop="8dp">
 
         <AutoCompleteTextView
+            android:id="@+id/gender_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none" />
