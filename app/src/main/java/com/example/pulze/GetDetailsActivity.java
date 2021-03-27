@@ -132,7 +132,6 @@ public class GetDetailsActivity extends AppCompatActivity {
 
         String[] gender_option = {"Male", "Female"};
 
-        //Creating the instance of ArrayAdapter containing list of fruit names
         ArrayAdapter<String> adapter = new ArrayAdapter(this, R.layout.gender_list_item, gender_option);
         gender_list.setText(adapter.getItem(0).toString(),false);
         gender_list.setAdapter(adapter);
