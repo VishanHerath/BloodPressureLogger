@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pulze">
+    package="com.kdu.pulze">
 
     <application
         android:allowBackup="true"
@@ -11,10 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pulze">
         <activity
-            android:name=".SettingsActivity"
+            android:name="lk.kdu.pulze.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".SplashActivity"
+            android:name="lk.kdu.pulze.SplashActivity"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="lk.kdu.pulze.MainActivity"
             android:windowSoftInputMode="adjustResize" />
     </application>
 

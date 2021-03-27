@@ -1,4 +1,4 @@
-package com.example.pulze;
+package lk.kdu.pulze;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -23,6 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
+import com.kdu.pulze.R;
 
 public class BottomSheetDialog extends BottomSheetDialogFragment {
     private Button date_picker;

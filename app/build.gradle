@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.pulze"
+        applicationId "lk.kdu.pulze"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
