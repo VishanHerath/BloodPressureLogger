@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
                     // Thread will sleep for 5 seconds
                     sleep(SPLASH_TIME_OUT);
                     // After 5 seconds redirect to another intent
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    startActivity(new Intent(SplashActivity.this, ViewPagerActivity.class));
                     //Remove activity
                     finish();
                 } catch (Exception e) {
