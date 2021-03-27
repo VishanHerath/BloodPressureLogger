@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.kdu.pulze.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

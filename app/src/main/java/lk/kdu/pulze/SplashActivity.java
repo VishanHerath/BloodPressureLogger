@@ -1,8 +1,10 @@
 package lk.kdu.pulze;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
@@ -24,13 +26,21 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Thread splash = new Thread() {
             public void run() {
                 try {
                     // Thread will sleep for 5 seconds
                     sleep(SPLASH_TIME_OUT);
                     // After 5 seconds redirect to another intent
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+
+                    // Check if we need to display our OnBoardingSupportFragment
+                    if (!sharedPreferences.getBoolean("flag", false)) {
+                        startActivity(new Intent(SplashActivity.this, ViewPagerActivity.class));
+                    } else {
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    }
+
                     //Remove activity
                     finish();
                 } catch (Exception e) {
@@ -51,8 +61,7 @@ public class SplashActivity extends AppCompatActivity {
             final WindowInsetsController controller = getWindow().getInsetsController();
             if (controller != null)
                 controller.hide(WindowInsets.Type.statusBars());
-        }
-        else {
+        } else {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                             // Set the content to appear under the system bars so that the

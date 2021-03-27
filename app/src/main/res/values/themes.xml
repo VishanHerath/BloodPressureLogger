@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Pulze" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.pulze" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:fontFamily">@font/product_sans</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryColor</item>
@@ -21,5 +21,23 @@
         <item name="colorOnPrimary">@color/grey</item>
         <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="android:statusBarColor" tools:targetApi="l">@color/primaryColor</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="Theme.pulze">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Theme.GetDetailsActivity" parent="Theme.pulze">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 </resources>

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ExtendedFloatingActionButton floatingActionButton;
     private MaterialToolbar materialToolbar;
     private DrawerLayout drawerLayout;
-    private Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
