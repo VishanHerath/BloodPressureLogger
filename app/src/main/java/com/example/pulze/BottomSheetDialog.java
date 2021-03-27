@@ -12,11 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,11 +22,12 @@ import androidx.annotation.RequiresApi;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class BottomSheetDialog extends BottomSheetDialogFragment {
     private Button date_picker;
     private TextView selectedDate;
-    private AutoCompleteTextView systole;
+    private TextInputEditText systole;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable
@@ -39,14 +37,6 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         selectedDate = v.findViewById(R.id.date_text);
         date_picker = v.findViewById(R.id.date_picker);
         systole = v.findViewById(R.id.systole);
-
-        String[] fruits = {"Apple", "Banana", "Cherry", "Date", "Grape", "Kiwi", "Mango", "Pear"};
-
-        //Creating the instance of ArrayAdapter containing list of fruit names
-        ArrayAdapter<String> adapter = new ArrayAdapter<>
-                (v.getContext(), android.R.layout.select_dialog_item, fruits);
-        systole.setThreshold(1);
-        systole.setAdapter(adapter);
 
         // now register the text view and the button with
         // their appropriate IDs

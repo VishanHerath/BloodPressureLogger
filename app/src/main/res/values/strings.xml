@@ -29,4 +29,7 @@
     <string name="systole">Systole</string>
     <string name="mmhg">mmHg</string>
     <string name="diastole">Diastole</string>
+    <string name="systole_text">Enter Systole</string>
+    <string name="diastole_text">Enter Diastole</string>
+    <string name="statistics">Statistics</string>
 </resources>
