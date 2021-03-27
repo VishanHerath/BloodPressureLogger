@@ -88,23 +88,36 @@ public class GetDetailsActivity extends AppCompatActivity {
 
         Button btn = findViewById(R.id.startBtn);
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor preferences = PreferenceManager.getDefaultSharedPreferences(this).edit();
+
+        SharedPreferences.Editor sharedPreferencesEditor = PreferenceManager.getDefaultSharedPreferences(this).edit();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try{
 
-                SharedPreferences.Editor editor = preferences.edit();
-                String n  = name.getText().toString();
-                String g  = gender.getText().toString();
-                String d  = getDate.getText().toString();
+                    String n  = name.getText().toString();
+                    String g  = gender.getText().toString();
+                    String d  = getDate.getText().toString();
 
-                editor.putString("Name", n);
-                editor.putString("Gender", g);
-                editor.putString("Birthday", d);
-                editor.apply();
+                    preferences.putString("Name", n);
+                    preferences.putString("Gender", g);
+                    preferences.putString("Birthday", d);
+                    preferences.apply();
 
-                startActivity(new Intent(GetDetailsActivity.this, MainActivity.class));
+
+                }
+                catch(Exception ex){
+                    ex.toString();
+
+                }
+                finally {
+                    startActivity(new Intent(GetDetailsActivity.this, MainActivity.class));
+                    sharedPreferencesEditor.putBoolean("flag", true);
+                    sharedPreferencesEditor.apply();
+                }
+
             }
         });
 
