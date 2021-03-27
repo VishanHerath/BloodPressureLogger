@@ -5,17 +5,13 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/item1"
-            android:icon="@drawable/ic_baseline_add_24"
+            android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/home"
             android:checked="true" />
         <item
             android:id="@+id/item2"
-            android:icon="@drawable/ic_baseline_add_24"
-            android:title="@string/app_name" />
-        <item
-            android:id="@+id/item3"
-            android:icon="@drawable/ic_baseline_add_24"
-            android:title="@string/app_name" />
+            android:icon="@drawable/ic_baseline_insights_24"
+            android:title="@string/statistics" />
     </group>
 
     <group
@@ -26,13 +22,8 @@
             android:title="Subtitle">
             <menu>
                 <item
-                    android:id="@+id/item4"
-                    android:icon="@drawable/ic_baseline_add_24"
-                    android:title="Item 4" />
-
-                <item
-                    android:id="@+id/item5"
-                    android:icon="@drawable/ic_baseline_add_24"
+                    android:id="@+id/item3"
+                    android:icon="@drawable/ic_baseline_settings_24"
                     android:title="@string/settings" />
 
             </menu>

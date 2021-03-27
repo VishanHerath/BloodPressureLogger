@@ -18,6 +18,7 @@ import com.google.android.material.tabs.TabLayout;
 public class ViewPagerActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private Button button;
+    private TabLayout tabLayout;
     private SliderPagerAdapter adapter;
 
     @Override
@@ -36,7 +37,7 @@ public class ViewPagerActivity extends AppCompatActivity {
         //getSupportActionBar().hide();
         // bind views
         viewPager = findViewById(R.id.pagerIntroSlider);
-        TabLayout tabLayout = findViewById(R.id.tabs);
+        tabLayout = findViewById(R.id.tabs);
         button = findViewById(R.id.sliderButton);
 
         // init slider pager adapter

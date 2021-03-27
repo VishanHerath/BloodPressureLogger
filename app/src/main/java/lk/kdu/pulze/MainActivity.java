@@ -1,9 +1,9 @@
 package lk.kdu.pulze;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ExtendedFloatingActionButton floatingActionButton;
     MaterialToolbar toolbar;
     private DrawerLayout drawerLayout;
-    private Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         if (item.getItemId() == R.id.item1) {
             Toast.makeText(getApplicationContext(), "Clicked Item 1", Toast.LENGTH_LONG).show();
+        }
+        if (item.getItemId() == R.id.item3) {
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
         }
         //close navigation drawer
         drawerLayout.closeDrawers();

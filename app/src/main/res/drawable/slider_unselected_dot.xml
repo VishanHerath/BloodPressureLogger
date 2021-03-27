@@ -11,7 +11,7 @@
             <solid android:color="@android:color/transparent" />
             <stroke
                 android:width="1dp"
-                android:color="#6200ee" />
+                android:color="@color/secondaryLightColor" />
         </shape>
     </item>
 </layer-list>

@@ -16,10 +16,28 @@
     </style>
 
     <!-- Splash Screen theme. -->
-    <style name="SplashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="SplashScreenTheme" parent="Theme.Pulze">
         <item name="colorPrimary">@color/secondaryDarkColor</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="android:statusBarColor" tools:targetApi="l">@color/grey</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="Theme.Pulze">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Theme.GetDetailsActivity" parent="Theme.Pulze">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 </resources>

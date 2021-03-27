@@ -16,7 +16,7 @@
     </style>
 
     <!-- Splash Screen theme. -->
-    <style name="SplashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="SplashScreenTheme" parent="Theme.Pulze">
         <item name="colorPrimary">@color/white</item>
         <item name="colorOnPrimary">@color/grey</item>
         <item name="android:windowBackground">@drawable/splash_background</item>
