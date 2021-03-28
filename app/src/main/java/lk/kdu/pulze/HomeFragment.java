@@ -32,7 +32,6 @@ public class HomeFragment extends Fragment {
 
     private Button testBtn;
     private SharedPreferences sharedPreferences;
-    private LineChart lineChart;
     private BarChart barChart;
 
     @Nullable

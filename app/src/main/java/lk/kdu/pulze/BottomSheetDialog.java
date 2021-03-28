@@ -33,7 +33,7 @@ import java.util.Calendar;
 
 public class BottomSheetDialog extends BottomSheetDialogFragment {
     private Button dateTimePicker, bottomSheetButton;
-    private TextInputEditText systole, diastole;
+    private TextInputEditText systole, diastole, pulse;
 
 
     @Override
@@ -44,6 +44,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         dateTimePicker = v.findViewById(R.id.date_picker);
         systole = v.findViewById(R.id.systole);
         diastole = v.findViewById(R.id.diastole);
+        pulse = v.findViewById(R.id.pulse);
         bottomSheetButton = v.findViewById(R.id.bottom_sheet_button);
 
         dateTimePicker.setOnClickListener(new View.OnClickListener() {
