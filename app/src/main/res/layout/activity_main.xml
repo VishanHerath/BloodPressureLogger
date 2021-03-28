@@ -11,26 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            app:elevation="0dp">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:background="@drawable/toolbar_background"
-                android:elevation="4dp"
-                app:layout_scrollFlags="enterAlways|snap"
-                app:menu="@menu/top_app_bar"
-                app:navigationIcon="@drawable/ic_baseline_menu_24"
-                app:title="@string/app_name"
-                tools:targetApi="lollipop" />
-
-        </com.google.android.material.appbar.AppBarLayout>
+        <include layout="@layout/toolbar_layout" />
 
 
         <!-- Note: A RecyclerView can also be used -->
@@ -38,12 +19,13 @@
             android:id="@+id/mainScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="?attr/actionBarSize"
             android:fillViewport="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <!-- Scrollable content -->
 
-            <include layout="@layout/content_main"/>
+            <include layout="@layout/content_main" />
 
 
         </androidx.core.widget.NestedScrollView>
@@ -52,11 +34,11 @@
             android:id="@+id/extended_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
             android:contentDescription="@string/fab_content_desc"
             android:text="@string/add"
-            app:icon="@drawable/ic_baseline_add_24"/>
+            app:icon="@drawable/ic_baseline_add_24" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

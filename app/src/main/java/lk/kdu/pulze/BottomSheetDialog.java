@@ -1,6 +1,7 @@
 package lk.kdu.pulze;
 
 import android.app.Dialog;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -28,7 +29,6 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class    BottomSheetDialog extends BottomSheetDialogFragment {
     private Button date_picker;
-    private TextView selectedDate;
     private TextInputEditText systole,diastole;
 
     @Override
@@ -36,7 +36,6 @@ public class    BottomSheetDialog extends BottomSheetDialogFragment {
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.bottom_sheet_layout,
                 container, false);
-        selectedDate = v.findViewById(R.id.date_text);
         date_picker = v.findViewById(R.id.date_picker);
         systole = v.findViewById(R.id.systole);
         diastole = v.findViewById(R.id.diastole);
@@ -80,7 +79,7 @@ public class    BottomSheetDialog extends BottomSheetDialogFragment {
                                 // if the user clicks on the positive
                                 // button that is ok button update the
                                 // selected date
-                                selectedDate.setText(materialDatePicker.getHeaderText());
+                                date_picker.setText(materialDatePicker.getHeaderText());
                                 // in the above statement, getHeaderText
                                 // will return selected date preview from the
                                 // dialog
@@ -98,14 +97,14 @@ public class    BottomSheetDialog extends BottomSheetDialogFragment {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
-            setWhiteNavigationBar(dialog);
+            setNavigationBarColor(dialog);
         }
 
         return dialog;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void setWhiteNavigationBar(@NonNull Dialog dialog) {
+    private void setNavigationBarColor(@NonNull Dialog dialog) {
         Window window = dialog.getWindow();
         if (window != null) {
             DisplayMetrics metrics = new DisplayMetrics();
@@ -116,7 +115,18 @@ public class    BottomSheetDialog extends BottomSheetDialogFragment {
 
             GradientDrawable navigationBarDrawable = new GradientDrawable();
             navigationBarDrawable.setShape(GradientDrawable.RECTANGLE);
-            navigationBarDrawable.setColor(Color.WHITE);
+            int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+            switch (currentNightMode) {
+                case Configuration.UI_MODE_NIGHT_NO:
+                    // Night mode is not active, we're using the light theme
+                    navigationBarDrawable.setColor(Color.WHITE);
+                    break;
+                case Configuration.UI_MODE_NIGHT_YES:
+                    // Night mode is active, we're using dark theme
+                    navigationBarDrawable.setColor(Color.parseColor("#434343"));
+                    break;
+            }
+
 
             Drawable[] layers = {dimDrawable, navigationBarDrawable};
 

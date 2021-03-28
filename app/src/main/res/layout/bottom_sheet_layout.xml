@@ -18,23 +18,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:id="@+id/date_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/select_date"
-            android:textSize="18sp" />
+        android:orientation="horizontal">
 
         <Button
+            android:gravity="center"
+            android:height="64dp"
             android:id="@+id/date_picker"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-            android:layout_width="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/select"
+            android:text="@string/select_date"
             app:icon="@drawable/ic_baseline_calendar_today_24" />
     </LinearLayout>
 
@@ -42,8 +35,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/systole_layout"
@@ -55,6 +47,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/systole"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -65,8 +59,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/diastole_layout"
@@ -78,6 +71,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/diastole"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

@@ -25,11 +25,10 @@ public class GetDetailsActivity extends AppCompatActivity {
 
     private Button mPickDateButton;
     private AutoCompleteTextView gender_list;
-    private TextView mShowSelectedDateText;
     private TextInputEditText name;
     private TextInputLayout nameLayout;
     private AutoCompleteTextView gender;
-    private Button getDate, startBtn;
+    private Button startBtn;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -83,7 +82,7 @@ public class GetDetailsActivity extends AppCompatActivity {
                         // if the user clicks on the positive
                         // button that is ok button update the
                         // selected date
-                        mShowSelectedDateText.setText(materialDatePicker.getHeaderText());
+                        mPickDateButton.setText(materialDatePicker.getHeaderText());
                         // in the above statement, getHeaderText
                         // is the selected date preview from the
                         // dialog
@@ -98,30 +97,30 @@ public class GetDetailsActivity extends AppCompatActivity {
 
         SharedPreferences.Editor preferences = PreferenceManager.getDefaultSharedPreferences(this).edit();
 
-        SharedPreferences.Editor sharedPreferencesEditor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     if (validateData()) {
                         nameLayout.setError(null);
-                        getDate.setError(null);
+                        mPickDateButton.setError(null);
                         String n = name.getText().toString();
                         String g = gender.getText().toString();
-                        String d = getDate.getText().toString();
+                        String d = mPickDateButton.getText().toString();
 
-                        preferences.putString("Name", n);
-                        preferences.putString("Gender", g);
-                        preferences.putString("Birthday", d);
+                        preferences.putString("name", n);
+                        preferences.putString("gender", g);
+                        preferences.putString("dob", d);
+
+                        //Commit returns a boolean while apply is asynchronous
                         preferences.apply();
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 } finally {
                     if (validateData()) {
-                        sharedPreferencesEditor.putBoolean("flag", true);
-                        sharedPreferencesEditor.apply();
+                        preferences.putBoolean("flag", true);
+                        preferences.apply();
                         startActivity(new Intent(GetDetailsActivity.this, MainActivity.class));
                     }
 
@@ -151,8 +150,8 @@ public class GetDetailsActivity extends AppCompatActivity {
             nameLayout.setError("Please enter your name");
             return false;
         }
-        if (getDate.getText().equals("Select Birthday")) {
-            getDate.setError("Please enter your birthday");
+        if (mPickDateButton.getText().equals("Select Birthday")) {
+            mPickDateButton.setError("Please enter your birthday");
             return false;
         }
         return true;
