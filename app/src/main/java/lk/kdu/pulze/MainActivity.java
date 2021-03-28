@@ -99,12 +99,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_fragment,new HomeFragment());
             fragmentTransaction.commit();
+            toolbar.setTitle("Home");
         }
         if (item.getItemId() == R.id.item2) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_fragment,new StatisticsFragment());
             fragmentTransaction.commit();
+            toolbar.setTitle("Statistics");
         }
         if (item.getItemId() == R.id.item3) {
            startActivity(new Intent(MainActivity.this,SettingsActivity.class));
