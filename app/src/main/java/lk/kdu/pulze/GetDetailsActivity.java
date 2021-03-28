@@ -39,7 +39,6 @@ public class GetDetailsActivity extends AppCompatActivity {
         // now register the text view and the button with
         // their appropriate IDs
         mPickDateButton = findViewById(R.id.pick_date_btn);
-        mShowSelectedDateText = findViewById(R.id.pick_date_btn);
 
         // now create instance of the material date picker
         // builder make sure to add the "datePicker" which
