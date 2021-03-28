@@ -13,4 +13,5 @@
             android:src="@drawable/icon_text"
             android:tint="?colorOnPrimary" />
     </item>
+
 </layer-list>

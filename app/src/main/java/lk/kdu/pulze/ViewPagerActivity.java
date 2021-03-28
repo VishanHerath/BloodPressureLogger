@@ -60,6 +60,7 @@ public class ViewPagerActivity extends AppCompatActivity {
                 }
                 if(adapter.getCount() == 4 && button.getText() == "Get Started"){
                     startActivity(new Intent(ViewPagerActivity.this, GetDetailsActivity.class));
+                    finish();
                 }
             }
         });

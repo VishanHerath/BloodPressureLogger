@@ -2,12 +2,16 @@ package lk.kdu.pulze;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class SettingsActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -35,6 +39,9 @@ public class SettingsActivity extends AppCompatActivity implements SharedPrefere
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
+        }
+        if (key.equals("name")) {
+            Toast.makeText(getApplicationContext(), "Changes Will Occur next time you Open the App", Toast.LENGTH_LONG).show();
         }
     }
 
