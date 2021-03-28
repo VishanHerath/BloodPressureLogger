@@ -40,13 +40,14 @@ public class GetDetailsActivity extends AppCompatActivity {
         // now register the text view and the button with
         // their appropriate IDs
         mPickDateButton = findViewById(R.id.pick_date_btn);
+        mShowSelectedDateText = findViewById(R.id.pick_date_btn);
 
         // now create instance of the material date picker
         // builder make sure to add the "datePicker" which
         // is normal material date picker which is the first
         // type of the date picker in material design date
         // picker
-        Builder<Long> materialDateBuilder = Builder.datePicker();
+        MaterialDatePicker.Builder materialDateBuilder = MaterialDatePicker.Builder.datePicker();
 
         // now define the properties of the
         // materialDateBuilder that is title text as SELECT A DATE
@@ -54,7 +55,7 @@ public class GetDetailsActivity extends AppCompatActivity {
 
         // now create the instance of the material date
         // picker
-        final MaterialDatePicker<Long> materialDatePicker = materialDateBuilder.build();
+        final MaterialDatePicker materialDatePicker = materialDateBuilder.build();
 
         // handle select date button which opens the
         // material design date picker
@@ -122,7 +123,6 @@ public class GetDetailsActivity extends AppCompatActivity {
                         sharedPreferencesEditor.putBoolean("flag", true);
                         sharedPreferencesEditor.apply();
                         startActivity(new Intent(GetDetailsActivity.this, MainActivity.class));
-                        finish();
                     }
 
                 }
