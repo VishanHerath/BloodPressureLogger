@@ -38,7 +38,7 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
             android:contentDescription="@string/fab_content_desc"
-            android:text="@string/add"
+            android:text="@string/add_record"
             app:icon="@drawable/ic_baseline_add_24" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
