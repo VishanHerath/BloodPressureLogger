@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Pulze</string>
     <string name="home">Home</string>
-    <string name="fab_content_desc">Add Record</string>
+    <string name="fab_content_desc">Add</string>
     <string name="add">ADD</string>
     <string name="slogan">Group 2</string>
     <string name="openNavDrawer">Open</string>
@@ -52,5 +52,4 @@
     <string name="recent">Recent</string>
     <string name="select_time">Select Time</string>
     <string name="select_date_time">Select Date And Time</string>
-    <string name="pulse">Pulse</string>
 </resources>
