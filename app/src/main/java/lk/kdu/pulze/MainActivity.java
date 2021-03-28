@@ -1,37 +1,41 @@
 package lk.kdu.pulze;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.NestedScrollView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import lk.kdu.pulze.data.RecordDataSource;
-import lk.kdu.pulze.model.Record;
-
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ExtendedFloatingActionButton floatingActionButton;
     private MaterialToolbar toolbar;
     private DrawerLayout drawerLayout;
-    private NestedScrollView scrollView;
+
     private NavigationView navigationView;
 
     FragmentManager fragmentManager;
@@ -45,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.topAppBar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_main);
-        scrollView = findViewById(R.id.mainScrollView);
         setSupportActionBar(toolbar);
 
         //Set Toolbar as ActionBar
@@ -76,26 +79,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                if (scrollY > oldScrollY) {
-                    floatingActionButton.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close));
-                    floatingActionButton.setVisibility(View.GONE);
-                }
-
-                if (scrollY == 0) {
-                    floatingActionButton.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open));
-                    floatingActionButton.setVisibility(View.VISIBLE);
-                }
-
-            }
-        });
-
         //Load Default Fragment
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container_fragment, new HomeFragment());
+        fragmentTransaction.add(R.id.container_fragment,new HomeFragment());
         fragmentTransaction.commit();
     }
 
@@ -105,19 +92,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (item.getItemId() == R.id.item1) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment, new HomeFragment());
+            fragmentTransaction.replace(R.id.container_fragment,new HomeFragment());
             fragmentTransaction.commit();
             toolbar.setTitle("Home");
         }
         if (item.getItemId() == R.id.item2) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment, new StatisticsFragment());
+            fragmentTransaction.replace(R.id.container_fragment,new StatisticsFragment());
             fragmentTransaction.commit();
             toolbar.setTitle("Statistics");
         }
         if (item.getItemId() == R.id.item3) {
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+           startActivity(new Intent(MainActivity.this,SettingsActivity.class));
         }
         //close navigation drawer
         drawerLayout.closeDrawers();
@@ -131,8 +118,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-    }
 }

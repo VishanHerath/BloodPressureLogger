@@ -3,6 +3,7 @@ package lk.kdu.pulze;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -15,39 +16,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ListView;
 import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
-import java.util.Random;
 
-import lk.kdu.pulze.data.RecordDataSource;
-import lk.kdu.pulze.model.Record;
-
-public class BottomSheetDialog extends BottomSheetDialogFragment implements AdapterView.OnItemClickListener {
+public class BottomSheetDialog extends BottomSheetDialogFragment {
     private Button dateTimePicker, bottomSheetButton;
-    private TextInputEditText systole, diastole, pulse;
-    private CoordinatorLayout bottom_container;
+    private TextInputEditText systole, diastole;
 
-    private ListView listView;
-    private RecordDataSource dataSource;
-
-    String[] possibleComments = {"Good", "Bad", "Not bad", "The worst", "Nice"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable
@@ -57,20 +44,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
         dateTimePicker = v.findViewById(R.id.date_picker);
         systole = v.findViewById(R.id.systole);
         diastole = v.findViewById(R.id.diastole);
-        pulse = v.findViewById(R.id.pulse);
-        bottom_container = v.findViewById(R.id.bottom_container);
         bottomSheetButton = v.findViewById(R.id.bottom_sheet_button);
-
-        listView = requireActivity().findViewById(R.id.listView);
-        dataSource = new RecordDataSource(getContext());
-        dataSource.open();
-
-        List<Record> records = dataSource.getAllRecords();
-        ArrayAdapter<Record> adapter = new ArrayAdapter<>(getContext(),
-                android.R.layout.simple_list_item_1, records);
-
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(this);
 
         dateTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,36 +57,17 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
         bottomSheetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
-
-                    Random rnd = new Random();
-                    int index = rnd.nextInt(possibleComments.length - 1);
-                    String record = possibleComments[index];
-                    Record newRecord = dataSource.createRecord(record);
-                    adapter.add(newRecord);
-//
-//                    if (v.getId() == R.id.add) {
-//
-//                    } else if (v.getId() == R.id.item1) {
-//                        if (adapter.getCount() > 0) {
-//                            Record record = (Record) adapter.getItem(0);
-//                            dataSource.deleteRecord(record);
-//                            adapter.remove(record);
-//                        }
-//                    }
-                    adapter.notifyDataSetChanged();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                Snackbar.make(bottom_container, "Record Added", Snackbar.LENGTH_LONG).setAction("UNDO", new View.OnClickListener() {
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext());
+                builder.setTitle("Record Added");
+                builder.setMessage("Successfully Inserted");
+                builder.setIcon(R.drawable.ic_baseline_info_24);
+                builder.setPositiveButton("OKAY", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
-
+                    public void onClick(DialogInterface dialog, int which) {
+                        //..
                     }
-                }).show();
+                });
+                builder.show();
             }
         });
 
@@ -227,15 +182,5 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
         };
 
         new DatePickerDialog(getContext(), dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
-        if (position >= 0 && position < adapter.getCount()) {
-            Record record = (Record) adapter.getItem(position);
-            dataSource.deleteRecord(record);
-            adapter.remove(record);
-        }
     }
 }
