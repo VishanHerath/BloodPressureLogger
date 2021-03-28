@@ -121,6 +121,7 @@ public class GetDetailsActivity extends AppCompatActivity {
                         preferences.putBoolean("flag", true);
                         preferences.apply();
                         startActivity(new Intent(GetDetailsActivity.this, MainActivity.class));
+                        finish();
                     }
 
                 }
