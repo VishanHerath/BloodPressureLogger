@@ -1,6 +1,8 @@
 package lk.kdu.pulze;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -14,89 +16,48 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class BottomSheetDialog extends BottomSheetDialogFragment {
-    private Button datePicker,bottomSheetButton;
-    private TextInputEditText systole,diastole;
+    private Button dateTimePicker, bottomSheetButton;
+    private TextInputEditText systole, diastole;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.bottom_sheet_layout,
                 container, false);
-        datePicker = v.findViewById(R.id.date_picker);
+        dateTimePicker = v.findViewById(R.id.date_picker);
         systole = v.findViewById(R.id.systole);
         diastole = v.findViewById(R.id.diastole);
         bottomSheetButton = v.findViewById(R.id.bottom_sheet_button);
 
-        // Register the text view and the button with
-        // their appropriate IDs
-
-        // now create instance of the material date picker
-        // builder make sure to add the "dateRangePicker"
-        // which is material date range picker which is the
-        // second type of the date picker in material design
-        // date picker we need to pass the pair of Long
-        // Long, because the start date and end date is
-        // store as "Long" type value
-        MaterialDatePicker.Builder<Long> materialDateBuilder = MaterialDatePicker.Builder.datePicker();
-
-        // now define the properties of the
-        // materialDateBuilder
-        materialDateBuilder.setTitleText("SELECT A DATE");
-
-        // now create the instance of the material date
-        // picker
-        MaterialDatePicker<Long> materialDatePicker = materialDateBuilder.build();
-
-        datePicker.setOnClickListener(new View.OnClickListener() {
+        dateTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // handle select date button which opens the
-                // material design date picker
-                materialDatePicker.show(getActivity().getSupportFragmentManager(), "MATERIAL_datePicker");
-
-
-                // now handle the positive button click from the
-                // material design date picker
-                materialDatePicker.addOnPositiveButtonClickListener(
-                        new MaterialPickerOnPositiveButtonClickListener() {
-                            @Override
-                            public void onPositiveButtonClick(Object selection) {
-
-                                // if the user clicks on the positive
-                                // button that is ok button update the
-                                // selected date
-                                datePicker.setText(materialDatePicker.getHeaderText());
-                                // in the above statement, getHeaderText
-                                // will return selected date preview from the
-                                // dialog
-                            }
-                        });
+                showDateTimeDialog();
             }
         });
-
 
 
         bottomSheetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MaterialAlertDialogBuilder builder=new MaterialAlertDialogBuilder(getContext());
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext());
                 builder.setTitle("Record Added");
                 builder.setMessage("Successfully Inserted");
                 builder.setIcon(R.drawable.ic_baseline_info_24);
@@ -109,6 +70,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
                 builder.show();
             }
         });
+
 
         return v;
     }
@@ -158,5 +120,67 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
 
             window.setBackgroundDrawable(windowBackground);
         }
+    }
+
+
+    private void showDateTimeDialog() {
+        final Calendar calendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        calendar.set(Calendar.MINUTE, minute);
+
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yy HH:mm");
+
+                        dateTimePicker.setText(simpleDateFormat.format(calendar.getTime()));
+                    }
+                };
+
+                new TimePickerDialog(getContext(), timeSetListener, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show();
+            }
+        };
+
+        new DatePickerDialog(getContext(), dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+
+    }
+
+    private void showTimeDialog() {
+        final Calendar calendar = Calendar.getInstance();
+
+        TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                calendar.set(Calendar.MINUTE, minute);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+                dateTimePicker.setText(simpleDateFormat.format(calendar.getTime()));
+            }
+        };
+
+        new TimePickerDialog(getContext(), timeSetListener, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show();
+    }
+
+    private void showDateDialog() {
+        final Calendar calendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy-MM-dd");
+                dateTimePicker.setText(simpleDateFormat.format(calendar.getTime()));
+            }
+        };
+
+        new DatePickerDialog(getContext(), dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 }
