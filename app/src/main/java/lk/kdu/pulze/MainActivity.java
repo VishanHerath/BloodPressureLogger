@@ -5,9 +5,11 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,8 +23,6 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.listener.OnChartGestureListener;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private SharedPreferences sharedPreferences;
     private LineChart lineChart;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.nav_main);
         lineChart = findViewById(R.id.lineChart);
 
+        setSupportActionBar(toolbar);
+
 //        lineChart.setOnChartGestureListener(MainActivity.this);
 //        lineChart.setOnChartValueSelectedListener(MainActivity.this);
 
@@ -60,12 +61,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         ArrayList<Entry> yValues = new ArrayList<>();
 
-        yValues.add(new Entry(0,60f));
-        yValues.add(new Entry(1,56f));
-        yValues.add(new Entry(2,34f));
-        yValues.add(new Entry(3,65f));
+        yValues.add(new Entry(0, 60f));
+        yValues.add(new Entry(1, 56f));
+        yValues.add(new Entry(2, 34f));
+        yValues.add(new Entry(3, 65f));
 
-        LineDataSet set1 = new LineDataSet(yValues,"Data Set One");
+        LineDataSet set1 = new LineDataSet(yValues, "Data Set One");
 
         set1.setFillAlpha(110);
         set1.setLineWidth(3f);
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        testBtn.setText(sharedPreferences.getString("Name",null));
+        testBtn.setText(sharedPreferences.getString("name", null));
 
         //Set Toolbar as ActionBar
 //        setSupportActionBar(toolbar);
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         );
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+        actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
 
         //Pass context to side-nav item click listener.
         navigationView.setNavigationItemSelectedListener(this);
@@ -128,4 +130,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawers();
         return true;
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.top_app_bar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
 }

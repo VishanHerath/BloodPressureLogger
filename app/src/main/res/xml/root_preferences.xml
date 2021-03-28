@@ -1,19 +1,19 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/messages_header">
+    <PreferenceCategory app:title="Details">
 
         <EditTextPreference
-            app:key="signature"
+            app:icon="@drawable/ic_baseline_account_circle_24"
+            app:key="name"
             app:title="Your Name"
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
-            app:useSimpleSummaryProvider="true" />
+            app:icon="@drawable/ic_baseline_accessibility_24"
+            app:entries="@array/gender_entries"
+            app:entryValues="@array/gender_values"
+            app:key="gender"
+            app:title="Gender" />
 
     </PreferenceCategory>
 
@@ -21,11 +21,11 @@
 
         <SwitchPreferenceCompat
             app:icon="@drawable/ic_baseline_brightness_4_24"
-            app:key="sync"
-            app:title="@string/sync_title" />
+            app:key="dark_mode"
+            app:title="Dark Mode" />
 
         <SwitchPreferenceCompat
-            app:dependency="sync"
+            app:dependency="dark_mode"
             app:key="attachment"
             app:summaryOff="@string/attachment_summary_off"
             app:summaryOn="@string/attachment_summary_on"

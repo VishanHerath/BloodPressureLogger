@@ -107,9 +107,9 @@ public class GetDetailsActivity extends AppCompatActivity {
                         String g = gender.getText().toString();
                         String d = mPickDateButton.getText().toString();
 
-                        preferences.putString("Name", n);
-                        preferences.putString("Gender", g);
-                        preferences.putString("Birthday", d);
+                        preferences.putString("name", n);
+                        preferences.putString("gender", g);
+                        preferences.putString("dob", d);
 
                         //Commit returns a boolean while apply is asynchronous
                         preferences.apply();

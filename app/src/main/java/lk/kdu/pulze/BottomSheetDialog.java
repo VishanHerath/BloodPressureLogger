@@ -1,6 +1,7 @@
 package lk.kdu.pulze;
 
 import android.app.Dialog;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -96,14 +97,14 @@ public class    BottomSheetDialog extends BottomSheetDialogFragment {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
-            setWhiteNavigationBar(dialog);
+            setNavigationBarColor(dialog);
         }
 
         return dialog;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void setWhiteNavigationBar(@NonNull Dialog dialog) {
+    private void setNavigationBarColor(@NonNull Dialog dialog) {
         Window window = dialog.getWindow();
         if (window != null) {
             DisplayMetrics metrics = new DisplayMetrics();
@@ -114,7 +115,18 @@ public class    BottomSheetDialog extends BottomSheetDialogFragment {
 
             GradientDrawable navigationBarDrawable = new GradientDrawable();
             navigationBarDrawable.setShape(GradientDrawable.RECTANGLE);
-            navigationBarDrawable.setColor(Color.WHITE);
+            int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+            switch (currentNightMode) {
+                case Configuration.UI_MODE_NIGHT_NO:
+                    // Night mode is not active, we're using the light theme
+                    navigationBarDrawable.setColor(Color.WHITE);
+                    break;
+                case Configuration.UI_MODE_NIGHT_YES:
+                    // Night mode is active, we're using dark theme
+                    navigationBarDrawable.setColor(Color.parseColor("#434343"));
+                    break;
+            }
+
 
             Drawable[] layers = {dimDrawable, navigationBarDrawable};
 
