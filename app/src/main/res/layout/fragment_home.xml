@@ -29,11 +29,10 @@
                 android:textAppearance="?attr/textAppearanceHeadline6" />
 
             <!-- Media -->
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/lineChart"
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChart"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginBottom="8dp" />
+                android:layout_height="300dp" />
 
         </LinearLayout>
 

@@ -48,13 +48,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         floatingActionButton = findViewById(R.id.extended_fab);
         toolbar = findViewById(R.id.topAppBar);
         drawerLayout = findViewById(R.id.drawer);
-
         navigationView = findViewById(R.id.nav_main);
-
-
         setSupportActionBar(toolbar);
-
-
 
         //Set Toolbar as ActionBar
 //        setSupportActionBar(toolbar);

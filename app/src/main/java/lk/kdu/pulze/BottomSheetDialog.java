@@ -1,6 +1,7 @@
 package lk.kdu.pulze;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -25,10 +26,11 @@ import androidx.annotation.RequiresApi;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class    BottomSheetDialog extends BottomSheetDialogFragment {
-    private Button date_picker;
+public class BottomSheetDialog extends BottomSheetDialogFragment {
+    private Button datePicker,bottomSheetButton;
     private TextInputEditText systole,diastole;
 
     @Override
@@ -36,9 +38,10 @@ public class    BottomSheetDialog extends BottomSheetDialogFragment {
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.bottom_sheet_layout,
                 container, false);
-        date_picker = v.findViewById(R.id.date_picker);
+        datePicker = v.findViewById(R.id.date_picker);
         systole = v.findViewById(R.id.systole);
         diastole = v.findViewById(R.id.diastole);
+        bottomSheetButton = v.findViewById(R.id.bottom_sheet_button);
 
         // Register the text view and the button with
         // their appropriate IDs
@@ -60,13 +63,13 @@ public class    BottomSheetDialog extends BottomSheetDialogFragment {
         // picker
         MaterialDatePicker<Long> materialDatePicker = materialDateBuilder.build();
 
-        date_picker.setOnClickListener(new View.OnClickListener() {
+        datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 // handle select date button which opens the
                 // material design date picker
-                materialDatePicker.show(getActivity().getSupportFragmentManager(), "MATERIAL_DATE_PICKER");
+                materialDatePicker.show(getActivity().getSupportFragmentManager(), "MATERIAL_datePicker");
 
 
                 // now handle the positive button click from the
@@ -79,7 +82,7 @@ public class    BottomSheetDialog extends BottomSheetDialogFragment {
                                 // if the user clicks on the positive
                                 // button that is ok button update the
                                 // selected date
-                                date_picker.setText(materialDatePicker.getHeaderText());
+                                datePicker.setText(materialDatePicker.getHeaderText());
                                 // in the above statement, getHeaderText
                                 // will return selected date preview from the
                                 // dialog
@@ -87,6 +90,26 @@ public class    BottomSheetDialog extends BottomSheetDialogFragment {
                         });
             }
         });
+
+
+
+        bottomSheetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MaterialAlertDialogBuilder builder=new MaterialAlertDialogBuilder(getContext());
+                builder.setTitle("Record Added");
+                builder.setMessage("Successfully Inserted");
+                builder.setIcon(R.drawable.ic_baseline_info_24);
+                builder.setPositiveButton("OKAY", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //..
+                    }
+                });
+                builder.show();
+            }
+        });
+
         return v;
     }
 
