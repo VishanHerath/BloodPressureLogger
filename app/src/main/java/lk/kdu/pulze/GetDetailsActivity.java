@@ -111,7 +111,7 @@ public class GetDetailsActivity extends AppCompatActivity {
 
         String[] gender_option = {"Male", "Female"};
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.gender_list_item, gender_option);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item, gender_option);
         gender_list.setText(adapter.getItem(0).toString(), false);
         gender_list.setAdapter(adapter);
     }
