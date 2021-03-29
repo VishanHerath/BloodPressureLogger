@@ -23,16 +23,21 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements OnChartValueSelectedListener {
 
     private Button testBtn;
     private SharedPreferences sharedPreferences;
     private BarChart barChart;
+    private LineChart lineChart;
+
 
     @Nullable
     @Override
@@ -40,8 +45,13 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         testBtn = v.findViewById(R.id.testBtn);
 
+        lineChart = v.findViewById(R.id.activity_main_linechart);
 
         barChart = v.findViewById(R.id.barChart);
+
+        showLineChart();
+        addEntry(12);
+        addEntry(65);
 
         showBarChart();
         initBarChart();
@@ -52,14 +62,112 @@ public class HomeFragment extends Fragment {
         return v;
     }
 
-    private void showBarChart(){
+    private void showLineChart() {
+        lineChart.setOnChartValueSelectedListener(this);                // enable description text
+        lineChart.getDescription().setEnabled(true);
+
+        // enable touch gestures
+        lineChart.setTouchEnabled(true);
+        lineChart.setDrawBorders(true);
+
+        // enable scaling and dragging
+        lineChart.setDragEnabled(true);
+        lineChart.setScaleEnabled(true);
+        lineChart.setDrawGridBackground(false);
+
+        // if disabled, scaling can be done on x- and y-axis separately
+        lineChart.setPinchZoom(true);
+
+        // set an alternative background color
+//        lineChart.setBackgroundColor(getResources().getColor(R.color.white));
+
+        LineData data = new LineData();
+        data.setValueTextColor(Color.GRAY);
+
+        // add empty data
+        lineChart.setData(data);
+
+        lineChart.getDescription().setText(getResources().getString(R.string.app_name));
+        lineChart.getDescription().setTextColor(Color.GRAY);
+
+        // get the legend (only possible after setting data)
+        Legend l = lineChart.getLegend();
+
+        // modify the legend ...
+        l.setForm(Legend.LegendForm.LINE);
+        l.setTextColor(Color.GRAY);
+
+        XAxis xl = lineChart.getXAxis();
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        xl.setTextColor(Color.GRAY);
+        xl.setDrawGridLines(false);
+        xl.setAvoidFirstLastClipping(true);
+        xl.setEnabled(true);
+
+        YAxis leftAxis = lineChart.getAxisLeft();
+        leftAxis.setTextColor(Color.GRAY);
+        leftAxis.setAxisMaximum(100f);
+        leftAxis.setAxisMinimum(0f);
+        leftAxis.setDrawGridLines(true);
+        leftAxis.setGridColor(Color.GRAY);
+
+        YAxis rightAxis = lineChart.getAxisRight();
+        rightAxis.setEnabled(false);
+    }
+
+    private void addEntry(float value) {
+
+        LineData data = lineChart.getData();
+
+        if (data != null) {
+
+            ILineDataSet set = data.getDataSetByIndex(0);
+
+            if (set == null) {
+                set = createSet();
+                data.addDataSet(set);
+            }
+
+            data.addEntry(new Entry(set.getEntryCount(), value), 0);
+            data.notifyDataChanged();
+
+            // let the graph know it's data has changed
+            lineChart.notifyDataSetChanged();
+
+            // limit the number of visible entries
+            lineChart.setVisibleXRangeMaximum(120);
+
+            // move to the latest entry
+            lineChart.moveViewToX(data.getEntryCount());
+        }
+    }
+
+    private LineDataSet createSet() {
+        LineDataSet set = new LineDataSet(null, "One");
+        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+        set.setColor(Color.BLUE);
+        set.setCircleColor(Color.DKGRAY);
+        set.setLineWidth(2f);
+        set.setCircleRadius(4f);
+        set.setFillAlpha(65);
+        set.setFillColor(Color.BLUE);
+        set.setHighLightColor(Color.rgb(244, 117, 117));
+        set.setValueTextColor(Color.GRAY);
+        set.setValueTextSize(9f);
+        set.setDrawValues(false);
+        return set;
+    }
+
+
+
+    private void showBarChart() {
         ArrayList<Double> valueList = new ArrayList<>();
         ArrayList<BarEntry> entries = new ArrayList<>();
         ArrayList<Double> valueList1 = new ArrayList<>();
         ArrayList<BarEntry> entries1 = new ArrayList<>();
 
         //input data
-        for(int i = 0; i < 6; i++){
+        for (int i = 0; i < 6; i++) {
             valueList.add(i * 100.1);
             valueList1.add(i * 50.1);
         }
@@ -75,9 +183,9 @@ public class HomeFragment extends Fragment {
         BarDataSet barDataSet = new BarDataSet(entries, "Systole");
         BarDataSet barDataSet1 = new BarDataSet(entries1, "Diastole");
         //Initialize DataSet
-        initBarDataSet(barDataSet,"#0288D1");
-        initBarDataSet(barDataSet1,"#388E3C");
-        BarData data = new BarData(barDataSet,barDataSet1);
+        initBarDataSet(barDataSet, "#0288D1");
+        initBarDataSet(barDataSet1, "#388E3C");
+        BarData data = new BarData(barDataSet, barDataSet1);
 
         float BAR_SPACE = 0.05f;
         float BAR_WIDTH = 0.2f;
@@ -91,7 +199,7 @@ public class HomeFragment extends Fragment {
         barChart.invalidate();
     }
 
-    private void initBarDataSet(BarDataSet barDataSet,String color){
+    private void initBarDataSet(BarDataSet barDataSet, String color) {
         //Changing the color of the bar
         barDataSet.setColor(Color.parseColor(color));
         //Setting the size of the form in the legend
@@ -104,8 +212,8 @@ public class HomeFragment extends Fragment {
         barDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
     }
 
-    private void initBarChart(){
-        String[] months = new String[] {"TYPE 1", "TYPE 2", "TYPE 3", "TYPE 4"};
+    private void initBarChart() {
+        String[] months = new String[]{"TYPE 1", "TYPE 2", "TYPE 3", "TYPE 4"};
         //hiding the grey background of the chart, default false if not set
         barChart.setDrawGridBackground(false);
         //remove the bar shadow, default false if not set
@@ -167,17 +275,13 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private class barChartOnChartValueSelectedListener implements OnChartValueSelectedListener {
+    @Override
+    public void onValueSelected(Entry e, Highlight h) {
 
-        @Override
-        public void onValueSelected(Entry e, Highlight h) {
-            //trigger activity when the bar value is selected
+    }
 
-        }
+    @Override
+    public void onNothingSelected() {
 
-        @Override
-        public void onNothingSelected() {
-
-        }
     }
 }
