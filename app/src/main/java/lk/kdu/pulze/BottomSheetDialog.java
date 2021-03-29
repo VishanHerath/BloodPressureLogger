@@ -44,7 +44,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
     private TextInputEditText systole, diastole, pulse;
     private CoordinatorLayout bottom_container;
 
-    private ListView listView;
+   // private ListView listView;
     private RecordDataSource dataSource;
 
     String[] possibleComments = {"Good", "Bad", "Not bad", "The worst", "Nice"};
@@ -61,7 +61,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
         bottom_container = v.findViewById(R.id.bottom_container);
         bottomSheetButton = v.findViewById(R.id.bottom_sheet_button);
 
-        listView = requireActivity().findViewById(R.id.listView);
+       // listView = requireActivity().findViewById(R.id.listView);
         dataSource = new RecordDataSource(getContext());
         dataSource.open();
 
@@ -69,8 +69,8 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
         ArrayAdapter<Record> adapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_list_item_1, records);
 
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(this);
+       // listView.setAdapter(adapter);
+       // listView.setOnItemClickListener(this);
 
         dateTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +83,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
             @Override
             public void onClick(View v) {
                 try {
-                    ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
+                  //  ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
 
                     Random rnd = new Random();
                     int index = rnd.nextInt(possibleComments.length - 1);
@@ -230,11 +230,11 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
-        if (position >= 0 && position < adapter.getCount()) {
-            Record record = (Record) adapter.getItem(position);
-            dataSource.deleteRecord(record);
-            adapter.remove(record);
-        }
+       // ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
+       // if (position >= 0 && position < adapter.getCount()) {
+        //    Record record = (Record) adapter.getItem(position);
+       //     dataSource.deleteRecord(record);
+       //     adapter.remove(record);
+       // }
     }
 }
