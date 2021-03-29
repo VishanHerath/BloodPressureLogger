@@ -44,7 +44,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
     private TextInputEditText systole, diastole, pulse;
     private CoordinatorLayout bottom_container;
 
-    private ListView listView;
+   // private ListView listView;
     private RecordDataSource dataSource;
 
     String[] possibleComments = {"Good", "Bad", "Not bad", "The worst", "Nice"};
@@ -72,6 +72,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
 //        listView.setAdapter(adapter);
 //        listView.setOnItemClickListener(this);
 
+
         dateTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +84,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
             @Override
             public void onClick(View v) {
                 try {
-                    ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
+                  //  ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
 
                     Random rnd = new Random();
                     int index = rnd.nextInt(possibleComments.length - 1);
@@ -230,11 +231,11 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
-        if (position >= 0 && position < adapter.getCount()) {
-            Record record = (Record) adapter.getItem(position);
-            dataSource.deleteRecord(record);
-            adapter.remove(record);
-        }
+       // ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
+       // if (position >= 0 && position < adapter.getCount()) {
+        //    Record record = (Record) adapter.getItem(position);
+       //     dataSource.deleteRecord(record);
+       //     adapter.remove(record);
+       // }
     }
 }
