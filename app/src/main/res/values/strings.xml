@@ -54,4 +54,5 @@
     <string name="select_date_time">Select Date And Time</string>
     <string name="pulse">Pulse</string>
     <string name="average">Average</string>
+    <string name="notes">Notes</string>
 </resources>

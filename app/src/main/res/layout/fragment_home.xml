@@ -52,7 +52,7 @@
 
 
             <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/activity_main_linechart"
+                android:id="@+id/activity_main_lineChart"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"/>
 
@@ -115,17 +115,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Systol"
+                    android:text="@string/systole"
                     android:textAppearance="?attr/textAppearanceBody2"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Diastol"
+                    android:text="@string/diastole"
                     android:textAppearance="?attr/textAppearanceBody2"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pulse"
+                    android:text="@string/pulse"
                     android:textAppearance="?attr/textAppearanceBody2"/>
             </LinearLayout>
 

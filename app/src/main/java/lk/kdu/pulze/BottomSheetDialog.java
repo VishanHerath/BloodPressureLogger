@@ -61,16 +61,17 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
         bottom_container = v.findViewById(R.id.bottom_container);
         bottomSheetButton = v.findViewById(R.id.bottom_sheet_button);
 
-       // listView = requireActivity().findViewById(R.id.listView);
-        dataSource = new RecordDataSource(getContext());
-        dataSource.open();
+//        listView = requireActivity().findViewById(R.id.listView);
+//        dataSource = new RecordDataSource(getContext());
+//        dataSource.open();
+//
+//        List<Record> records = dataSource.getAllRecords();
+//        ArrayAdapter<Record> adapter = new ArrayAdapter<>(getContext(),
+//                android.R.layout.simple_list_item_1, records);
+//
+//        listView.setAdapter(adapter);
+//        listView.setOnItemClickListener(this);
 
-        List<Record> records = dataSource.getAllRecords();
-        ArrayAdapter<Record> adapter = new ArrayAdapter<>(getContext(),
-                android.R.layout.simple_list_item_1, records);
-
-       // listView.setAdapter(adapter);
-       // listView.setOnItemClickListener(this);
 
         dateTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
