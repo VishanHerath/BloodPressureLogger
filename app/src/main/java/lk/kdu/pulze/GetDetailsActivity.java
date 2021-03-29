@@ -79,7 +79,6 @@ public class GetDetailsActivity extends AppCompatActivity {
                         startActivity(new Intent(GetDetailsActivity.this, MainActivity.class));
                         finish();
                     }
-
                 }
             }
         });

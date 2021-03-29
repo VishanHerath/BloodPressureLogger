@@ -55,12 +55,12 @@ public class ViewPagerActivity extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                if (viewPager.getCurrentItem() < adapter.getCount()) {
+                if (viewPager.getCurrentItem() <= adapter.getCount()) {
+                    if(viewPager.getCurrentItem() == 3   && button.getText() == "Get Started"){
+                        startActivity(new Intent(ViewPagerActivity.this, GetDetailsActivity.class));
+                        finish();
+                    }
                     viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
-                }
-                if(adapter.getCount() == 4 && button.getText() == "Get Started"){
-                    startActivity(new Intent(ViewPagerActivity.this, GetDetailsActivity.class));
-                    finish();
                 }
             }
         });
