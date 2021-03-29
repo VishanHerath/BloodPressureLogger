@@ -108,7 +108,27 @@
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
-    <Button
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/chartCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notes"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+            <Button
         android:id="@+id/bottom_sheet_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
