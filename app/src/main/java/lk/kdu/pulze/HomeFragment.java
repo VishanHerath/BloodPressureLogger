@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
@@ -50,8 +51,11 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         barChart = v.findViewById(R.id.barChart);
 
         showLineChart();
-        addEntry(12);
-        addEntry(65);
+        addEntry(12,0); //Index 0 is Systole
+        addEntry(5,0); //Index 0 is Systole
+        addEntry(65,1); //Index 1 is Diastole
+        addEntry(45,1); //Index 1 is Diastole
+//        addEntry(65,2); //Index 2 is Pulse
 
         showBarChart();
         initBarChart();
@@ -77,6 +81,11 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
 
         // if disabled, scaling can be done on x- and y-axis separately
         lineChart.setPinchZoom(true);
+
+        //setting animation for y-axis, the bar will pop up from 0 to its value within the time we set
+        lineChart.animateY(1000, Easing.Linear);
+        //setting animation for x-axis, the bar will pop up separately within the time we set
+//        lineChart.animateX(1000);
 
         // set an alternative background color
 //        lineChart.setBackgroundColor(getResources().getColor(R.color.white));
@@ -115,20 +124,25 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         rightAxis.setEnabled(false);
     }
 
-    private void addEntry(float value) {
+    private void addEntry(float value, int setIndex) {
 
         LineData data = lineChart.getData();
 
         if (data != null) {
 
-            ILineDataSet set = data.getDataSetByIndex(0);
+            ILineDataSet set = data.getDataSetByIndex(setIndex);
 
             if (set == null) {
-                set = createSet();
+                if (setIndex == 0) {
+                    set = createSystoleSet();
+                }
+                if(setIndex == 1){
+                    set = createDiastoleSet();
+                }
                 data.addDataSet(set);
             }
 
-            data.addEntry(new Entry(set.getEntryCount(), value), 0);
+            data.addEntry(new Entry(set.getEntryCount(), value), setIndex);
             data.notifyDataChanged();
 
             // let the graph know it's data has changed
@@ -142,8 +156,24 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         }
     }
 
-    private LineDataSet createSet() {
-        LineDataSet set = new LineDataSet(null, "One");
+    private LineDataSet createSystoleSet() {
+        LineDataSet set = new LineDataSet(null, "Systole");
+        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+        set.setColor(Color.GREEN);
+        set.setCircleColor(Color.DKGRAY);
+        set.setLineWidth(2f);
+        set.setCircleRadius(4f);
+        set.setFillAlpha(65);
+        set.setFillColor(Color.BLUE);
+        set.setHighLightColor(Color.rgb(244, 117, 117));
+        set.setValueTextColor(Color.GRAY);
+        set.setValueTextSize(9f);
+        set.setDrawValues(false);
+        return set;
+    }
+
+    private LineDataSet createDiastoleSet() {
+        LineDataSet set = new LineDataSet(null, "Diastole");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(Color.BLUE);
         set.setCircleColor(Color.DKGRAY);
@@ -157,7 +187,6 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         set.setDrawValues(false);
         return set;
     }
-
 
 
     private void showBarChart() {
