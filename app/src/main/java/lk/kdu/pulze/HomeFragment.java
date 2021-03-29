@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         testBtn = v.findViewById(R.id.testBtn);
 
-        lineChart = v.findViewById(R.id.activity_main_linechart);
+        lineChart = v.findViewById(R.id.activity_main_lineChart);
 
         barChart = v.findViewById(R.id.barChart);
 
