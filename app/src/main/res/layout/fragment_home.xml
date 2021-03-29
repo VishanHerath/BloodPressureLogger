@@ -15,8 +15,7 @@
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Select Filter"
-        android:layout_marginTop="10dp">
+        android:hint="Select Filter">
 
         <AutoCompleteTextView
             android:id="@+id/filterData"
@@ -61,18 +60,32 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:layout_weight="0.5"
+            android:background="@color/primaryColor"
+            android:id="@+id/headings">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
                 android:text="@string/recent"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
+                android:textColor="@color/white"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:textColor="@color/white"
+                android:text="@string/average"
+                android:textAppearance="?attr/textAppearanceHeadline6"/>
+        </LinearLayout>
 
             <!--            <TextView-->
             <!--                android:layout_width="wrap_content"-->
@@ -89,37 +102,16 @@
             <!--                android:text="@string/app_name"-->
             <!--                android:textAppearance="?attr/textAppearanceBody2"-->
             <!--                android:textColor="?android:attr/textColorSecondary" />-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/headings">
 
             <ListView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="209dp"
                 android:minHeight="100dp" />
-
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Chart"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
-
-
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
