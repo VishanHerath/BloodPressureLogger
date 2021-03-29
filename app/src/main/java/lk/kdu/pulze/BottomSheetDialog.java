@@ -78,8 +78,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
                 showDateTimeDialog();
             }
         });
-
-
+        
         bottomSheetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
