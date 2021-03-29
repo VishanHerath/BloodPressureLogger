@@ -27,14 +27,15 @@ import androidx.annotation.RequiresApi;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class BottomSheetDialog extends BottomSheetDialogFragment {
     private Button dateTimePicker, bottomSheetButton;
-    private TextInputEditText systole, diastole;
-
+    private TextInputEditText systole, diastole,pulse;
+    private TextInputLayout systole_layout,diastole_layout,pulse_layout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable
@@ -44,6 +45,12 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         dateTimePicker = v.findViewById(R.id.date_picker);
         systole = v.findViewById(R.id.systole);
         diastole = v.findViewById(R.id.diastole);
+        pulse = v.findViewById((R.id.pulse));
+
+        systole_layout = v.findViewById(R.id.systole_layout);
+        diastole_layout = v.findViewById(R.id.diastole_layout);
+        pulse_layout = v.findViewById(R.id.pulse_layout);
+
         bottomSheetButton = v.findViewById(R.id.bottom_sheet_button);
 
         dateTimePicker.setOnClickListener(new View.OnClickListener() {
@@ -57,17 +64,26 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         bottomSheetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext());
-                builder.setTitle("Record Added");
-                builder.setMessage("Successfully Inserted");
-                builder.setIcon(R.drawable.ic_baseline_info_24);
-                builder.setPositiveButton("OKAY", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //..
+                try {
+                    if (validateData()) {
+                        systole_layout.setError(null);
+                        diastole_layout.setError(null);
+                        pulse_layout.setError(null);
+                        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext());
+                        builder.setTitle("Record Added");
+                        builder.setMessage("Successfully Inserted");
+                        builder.setIcon(R.drawable.ic_baseline_info_24);
+                        builder.setPositiveButton("OKAY", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //..
+                            }
+                        });
+                        builder.show();
                     }
-                });
-                builder.show();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -182,5 +198,24 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         };
 
         new DatePickerDialog(getContext(), dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
+
+    private boolean validateData() {
+        if (systole.getText().length() == 0) {
+            systole.requestFocus();
+            systole_layout.setError("Enter Systole value");
+            return false;
+        }
+        if (diastole.getText().length() == 0) {
+            diastole.requestFocus();
+            diastole_layout.setError("Enter Diastole value");
+            return false;
+        }
+        if (pulse.getText().length() == 0) {
+            pulse.requestFocus();
+            pulse_layout.setError("Enter Pulse value");
+            return false;
+        }
+        return true;
     }
 }
