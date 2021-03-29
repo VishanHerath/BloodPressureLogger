@@ -18,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.github.mikephil.charting.charts.LineChart;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_main);
         scrollView = findViewById(R.id.mainScrollView);
+
+
         setSupportActionBar(toolbar);
 
         //Set Toolbar as ActionBar
@@ -81,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if (scrollY > oldScrollY) {
                     floatingActionButton.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close));
-                    floatingActionButton.setVisibility(View.GONE);
+                    floatingActionButton.setVisibility(View.INVISIBLE);
                 }
 
                 if (scrollY == 0) {
