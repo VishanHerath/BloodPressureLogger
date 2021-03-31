@@ -1,4 +1,4 @@
-package lk.kdu.pulze.data;
+package lk.kdu.pulze.helper;
 
 import android.content.ContentValues;
 import android.content.Context;

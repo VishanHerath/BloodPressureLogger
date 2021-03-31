@@ -15,6 +15,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
+import lk.kdu.pulze.adapter.SliderPagerAdapter;
+
 public class ViewPagerActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private Button button;

@@ -1,4 +1,4 @@
-package lk.kdu.pulze;
+package lk.kdu.pulze.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

@@ -28,15 +28,12 @@ import androidx.annotation.RequiresApi;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Random;
 
-import lk.kdu.pulze.data.DatabaseHelper;
-import lk.kdu.pulze.model.Record;
+import lk.kdu.pulze.helper.DatabaseHelper;
 
 public class BottomSheetDialog extends BottomSheetDialogFragment implements AdapterView.OnItemClickListener {
     private Button dateTimePicker, bottomSheetButton;
