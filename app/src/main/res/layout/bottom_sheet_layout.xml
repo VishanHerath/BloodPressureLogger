@@ -31,6 +31,8 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:height="64dp"
             android:gravity="center"
             android:text="@string/select_date_time"
@@ -45,9 +47,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/systole_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/systole"
+            app:errorEnabled="true"
             app:suffixText="@string/mmHg">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -70,7 +74,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/diastole_layout"
             android:hint="@string/diastole"
+            app:errorEnabled="true"
             app:suffixText="@string/mmHg">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -92,7 +98,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/pulse_layout"
             android:hint="@string/pulse"
+            app:errorEnabled="true"
             app:suffixText="@string/mmHg">
 
             <com.google.android.material.textfield.TextInputEditText
