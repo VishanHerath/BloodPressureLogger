@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -83,6 +85,30 @@ public class GetDetailsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        name.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(name.getText().length() != 0){
+                    nameLayout.setError(null);
+                }else{
+                    nameLayout.setError("Please enter your name");
+                }
+            }
+        });
+
+
 
         //Gender items
         createList();
