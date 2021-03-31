@@ -1,4 +1,4 @@
-package lk.kdu.pulze.databasemodel;
+package lk.kdu.pulze.model;
 
 public class PressureModel {
 

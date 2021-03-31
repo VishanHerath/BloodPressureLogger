@@ -108,13 +108,13 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
             @Override
             public void onClick(View v) {
                 try {
-                  //  ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
-
-                    Random rnd = new Random();
-                    int index = rnd.nextInt(possibleComments.length - 1);
-                    String record = possibleComments[index];
-                    Record newRecord = dataSource.createRecord(record);
-                    adapter.add(newRecord);
+//                    ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
+//
+//                    Random rnd = new Random();
+//                    int index = rnd.nextInt(possibleComments.length - 1);
+//                    String record = possibleComments[index];
+//                    Record newRecord = dataSource.createRecord(record);
+//                    adapter.add(newRecord);
 //
 //                    if (v.getId() == R.id.add) {
 //
@@ -125,7 +125,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
 //                            adapter.remove(record);
 //                        }
 //                    }
-                    adapter.notifyDataSetChanged();
+//                    adapter.notifyDataSetChanged();
 
                 } catch (Exception e) {
                     e.printStackTrace();

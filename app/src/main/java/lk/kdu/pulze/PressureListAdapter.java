@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import lk.kdu.pulze.databasemodel.PressureModel;
+import lk.kdu.pulze.model.PressureModel;
 
 public class PressureListAdapter extends BaseAdapter {
 

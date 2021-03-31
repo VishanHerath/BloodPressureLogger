@@ -9,7 +9,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import lk.kdu.pulze.databasemodel.PressureModel;
+import lk.kdu.pulze.model.PressureModel;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 

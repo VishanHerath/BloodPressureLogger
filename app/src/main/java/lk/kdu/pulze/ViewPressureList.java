@@ -13,7 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 import lk.kdu.pulze.data.DatabaseHelper;
-import lk.kdu.pulze.databasemodel.PressureModel;
+import lk.kdu.pulze.model.PressureModel;
 
 public class ViewPressureList extends AppCompatActivity {
 

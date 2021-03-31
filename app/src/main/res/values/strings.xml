@@ -55,4 +55,6 @@
     <string name="pulse">Pulse</string>
     <string name="average">Average</string>
     <string name="notes">Notes</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
 </resources>
