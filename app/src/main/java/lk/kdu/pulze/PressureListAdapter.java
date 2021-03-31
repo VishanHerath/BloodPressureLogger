@@ -15,8 +15,6 @@ public class PressureListAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<PressureModel> pressureModelArrayList;
-    private PressureModel pressureModel;
-
 
     public PressureListAdapter(Context context, ArrayList<PressureModel> pressureModelArrayList) {
         this.context = context;
@@ -56,10 +54,9 @@ public class PressureListAdapter extends BaseAdapter {
             holder.not = (TextView) convertView.findViewById(R.id.not);
 
             convertView.setTag(holder);
-        }
-        else {
+        } else {
             // the getTag returns the viewHolder object set as a tag to the view
-            holder = (ViewHolder)convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
 
         holder.sis.setText(pressureModelArrayList.get(position).getDatetime());

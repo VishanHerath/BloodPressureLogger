@@ -10,7 +10,6 @@
         android:layout_height="wrap_content" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filter_menu"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
@@ -18,7 +17,6 @@
         android:hint="Select Filter">
 
         <AutoCompleteTextView
-            android:id="@+id/filterData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none" />
@@ -26,7 +24,6 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
@@ -61,7 +58,6 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/chartCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
@@ -136,7 +132,6 @@
                 android:layout_weight="0.3">
                 <TableRow>
                     <TextView
-                        android:id="@+id/plc_ModelId"
                         android:text="120 - 150"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -147,7 +142,6 @@
                 <TableRow>
 
                     <TextView
-                        android:id="@+id/plc_localIp"
                         android:text="100 - 110"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -157,7 +151,6 @@
                 </TableRow>
                 <TableRow>
                     <TextView
-                        android:id="@+id/plc_Version"
                         android:text="70 - 80"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
