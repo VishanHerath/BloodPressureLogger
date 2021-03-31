@@ -33,7 +33,7 @@ public class ViewPressureList extends AppCompatActivity {
 
         listCoordinator = findViewById(R.id.list_coordinator);
 
-        pressuresListView = (ListView) findViewById(R.id.pressuresListView);
+        pressuresListView = findViewById(R.id.pressuresListView);
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -41,6 +41,8 @@ public class ViewPressureList extends AppCompatActivity {
 
         customAdapter = new PressureListAdapter(this, pressureModelArrayList);
         pressuresListView.setAdapter(customAdapter);
+        customAdapter.notifyDataSetChanged();
+
 
         pressuresListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
