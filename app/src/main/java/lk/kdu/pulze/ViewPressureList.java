@@ -91,7 +91,7 @@ public class ViewPressureList extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(ViewPressureList.this, MainActivity.class));
         finish();
+        startActivity(new Intent(ViewPressureList.this, MainActivity.class));
     }
 }
