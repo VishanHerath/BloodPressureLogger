@@ -3,6 +3,7 @@ package lk.kdu.pulze;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -16,11 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ListView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,19 +33,18 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Random;
 
-import lk.kdu.pulze.data.RecordDataSource;
+import lk.kdu.pulze.data.DatabaseHelper;
 import lk.kdu.pulze.model.Record;
 
 public class BottomSheetDialog extends BottomSheetDialogFragment implements AdapterView.OnItemClickListener {
     private Button dateTimePicker, bottomSheetButton;
-    private TextInputEditText systole, diastole, pulse;
+    private TextInputEditText systole, diastole, pulse, note;
     private CoordinatorLayout bottom_container;
 
-   // private ListView listView;
-    private RecordDataSource dataSource;
+    private DatabaseHelper databaseHelper;
+    String date;
 
     String[] possibleComments = {"Good", "Bad", "Not bad", "The worst", "Nice"};
 
@@ -57,9 +56,13 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
         dateTimePicker = v.findViewById(R.id.date_picker);
         systole = v.findViewById(R.id.systole);
         diastole = v.findViewById(R.id.diastole);
+        note = v.findViewById(R.id.note);
         pulse = v.findViewById(R.id.pulse);
         bottom_container = v.findViewById(R.id.bottom_container);
         bottomSheetButton = v.findViewById(R.id.bottom_sheet_button);
+
+        databaseHelper = new DatabaseHelper(getActivity());
+
 
 //        listView = requireActivity().findViewById(R.id.listView);
 //        dataSource = new RecordDataSource(getContext());
@@ -80,6 +83,27 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
             }
         });
 
+
+        /*******************************************************************************************************************/
+
+        bottomSheetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseHelper. addPressure(Integer.parseInt(systole.getText().toString()), Integer.parseInt(diastole.getText().toString()), Integer.parseInt(pulse.getText().toString()), date, note.getText().toString());
+                diastole.setText("");
+                systole.setText("");
+                pulse.setText("");
+                note.setText("");
+                Toast.makeText(getActivity(), "Added Successfully!", Toast.LENGTH_SHORT).show();
+                Intent viewList = new Intent(getActivity(), ViewPressureList.class);
+                startActivity(viewList);
+
+            }
+        });
+
+        /*******************************************************************************************************************/
+
+/*
         bottomSheetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,10 +139,12 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
                 }).show();
             }
         });
-
+*/
 
         return v;
     }
+
+
 
     //Bring the Bottom Sheet above navigation buttons.
     @NonNull
@@ -184,8 +210,8 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
                         calendar.set(Calendar.MINUTE, minute);
 
                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yy HH:mm");
-
-                        dateTimePicker.setText(simpleDateFormat.format(calendar.getTime()));
+                        date = simpleDateFormat.format(calendar.getTime());
+                        dateTimePicker.setText(date);
                     }
                 };
 

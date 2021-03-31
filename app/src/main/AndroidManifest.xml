@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ViewPressureList"> </activity>
+
         <activity android:name=".ViewPagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
