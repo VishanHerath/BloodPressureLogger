@@ -1,4 +1,4 @@
-package lk.kdu.pulze;
+package lk.kdu.pulze.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import lk.kdu.pulze.R;
 import lk.kdu.pulze.model.PressureModel;
 
 public class PressureListAdapter extends BaseAdapter {
@@ -49,7 +50,7 @@ public class PressureListAdapter extends BaseAdapter {
 
             holder.sis = (TextView) convertView.findViewById(R.id.sys);
             holder.dias = (TextView) convertView.findViewById(R.id.dias);
-            holder.tim = (TextView) convertView.findViewById(R.id.tim);
+            holder.pul = (TextView) convertView.findViewById(R.id.pul);
             holder.day = (TextView) convertView.findViewById(R.id.day);
             holder.not = (TextView) convertView.findViewById(R.id.not);
 
@@ -59,17 +60,17 @@ public class PressureListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.sis.setText(pressureModelArrayList.get(position).getDatetime());
-        holder.dias.setText(String.valueOf(pressureModelArrayList.get(position).getSystolic()));
-        holder.day.setText(String.valueOf(pressureModelArrayList.get(position).getDiastolic()));
-        holder.tim.setText(String.valueOf(pressureModelArrayList.get(position).getPulse()));
+        holder.day.setText(pressureModelArrayList.get(position).getDatetime());
+        holder.sis.setText(String.valueOf(pressureModelArrayList.get(position).getSystolic()));
+        holder.dias.setText(String.valueOf(pressureModelArrayList.get(position).getDiastolic()));
+        holder.pul.setText(String.valueOf(pressureModelArrayList.get(position).getPulse()));
         holder.not.setText(pressureModelArrayList.get(position).getNotes());
 
         return convertView;
     }
 
     private class ViewHolder {
-        protected TextView sis, dias, tim, day, not;
+        protected TextView sis, dias, pul, day, not;
     }
 
 }

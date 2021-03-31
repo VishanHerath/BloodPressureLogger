@@ -1,9 +1,11 @@
-package lk.kdu.pulze;
+package lk.kdu.pulze.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import lk.kdu.pulze.SliderItemFragment;
 
 public class SliderPagerAdapter extends FragmentPagerAdapter {
     public SliderPagerAdapter(@NonNull FragmentManager fm, int behavior) {
