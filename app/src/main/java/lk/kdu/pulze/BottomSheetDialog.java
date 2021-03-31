@@ -28,6 +28,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,6 +37,7 @@ import lk.kdu.pulze.helper.DatabaseHelper;
 
 public class BottomSheetDialog extends BottomSheetDialogFragment {
     private Button dateTimePicker, bottomSheetButton;
+    private TextInputLayout systoleLayout,diastoleLayout,pulseLayout;
     private TextInputEditText systole, diastole, pulse, note;
     private CoordinatorLayout bottom_container;
 
@@ -49,6 +51,10 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.bottom_sheet_layout,
                 container, false);
+
+        systoleLayout = v.findViewById(R.id.systole_layout);
+        diastoleLayout = v.findViewById(R.id.diastole_layout);
+        pulseLayout = v.findViewById(R.id.pulse_layout);
 
         dateTimePicker = v.findViewById(R.id.date_picker);
         systole = v.findViewById(R.id.systole);
@@ -73,14 +79,21 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         bottomSheetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseHelper.addPressure(Integer.parseInt(systole.getText().toString()), Integer.parseInt(diastole.getText().toString()), Integer.parseInt(pulse.getText().toString()), date, note.getText().toString());
-                diastole.setText("");
-                systole.setText("");
-                pulse.setText("");
-                note.setText("");
-                Toast.makeText(getActivity(), "Added Successfully!", Toast.LENGTH_SHORT).show();
-                Intent viewList = new Intent(getActivity(), ViewPressureList.class);
-                startActivity(viewList);
+                if(validateFields()){
+                    dateTimePicker.setError(null);
+                    systole.setError(null);
+                    diastole.setError(null);
+                    pulse.setError(null);
+
+                    databaseHelper.addPressure(Integer.parseInt(systole.getText().toString()), Integer.parseInt(diastole.getText().toString()), Integer.parseInt(pulse.getText().toString()), date, note.getText().toString());
+                    diastole.setText("");
+                    systole.setText("");
+                    pulse.setText("");
+                    note.setText("");
+                    Toast.makeText(getActivity(), "Added Successfully!", Toast.LENGTH_SHORT).show();
+                    Intent viewList = new Intent(getActivity(), ViewPressureList.class);
+                    startActivity(viewList);
+                }
             }
         });
         return v;
@@ -196,4 +209,26 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         new DatePickerDialog(getContext(), dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
+    private boolean validateFields(){
+        if(dateTimePicker.getText().equals("Select Date And Time")){
+            dateTimePicker.setError("Please select date and time");
+            return false;
+        }
+        else if(systole.getText().length() == 0){
+            systoleLayout.requestFocus();
+            systoleLayout.setError("Systole value is empty!");
+            return false;
+        }
+        else if(diastole.getText().length() == 0){
+            diastoleLayout.requestFocus();
+            diastoleLayout.setError("Diastole value is empty!");
+            return false;
+        }
+        else if(pulse.getText().length() == 0){
+            pulseLayout.requestFocus();
+            pulseLayout.setError("Pulse value is empty!");
+            return false;
+        }
+        return true;
+    }
 }
