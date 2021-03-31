@@ -11,6 +11,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.text.TextWatcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -65,7 +67,6 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         bottomSheetButton = v.findViewById(R.id.bottom_sheet_button);
         databaseHelper = new DatabaseHelper(getActivity());
 
-
         dateTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,9 +87,13 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
                     pulse.setError(null);
 
                     databaseHelper.addPressure(Integer.parseInt(systole.getText().toString()), Integer.parseInt(diastole.getText().toString()), Integer.parseInt(pulse.getText().toString()), date, note.getText().toString());
+                    dateTimePicker.setText("Select Date and Time");
                     diastole.setText("");
+                    diastoleLayout.setError(null);
                     systole.setText("");
+                    systoleLayout.setError(null);
                     pulse.setText("");
+                    pulseLayout.setError(null);
                     note.setText("");
                     Toast.makeText(getActivity(), "Added Successfully!", Toast.LENGTH_SHORT).show();
                     Intent viewList = new Intent(getActivity(), ViewPressureList.class);
@@ -96,9 +101,75 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
                 }
             }
         });
+
+        systole.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(systole.getText().toString().length() != 0){
+                    systoleLayout.setError(null);
+                }else{
+                    systoleLayout.setError("Systole value is empty!");
+                }
+            }
+        });
+
+        diastole.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(diastole.getText().length() != 0){
+                    diastoleLayout.setError(null);
+                }else{
+                    diastoleLayout.setError("Diastole value is empty!");
+                }
+            }
+        });
+
+        pulse.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(pulse.getText().length() != 0){
+                    pulseLayout.setError(null);
+                }
+                else{
+                    pulseLayout.setError("Pulse value is empty!");
+                }
+            }
+        });
         return v;
     }
-
 
     //Bring the Bottom Sheet above navigation buttons.
     @NonNull
@@ -231,4 +302,6 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         }
         return true;
     }
+
+
 }
