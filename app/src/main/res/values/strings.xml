@@ -50,4 +50,5 @@
     <string name="exit">Exit</string>
     <string name="overview">Overview</string>
     <string name="all">All</string>
+    <string name="all_records">All Records</string>
 </resources>

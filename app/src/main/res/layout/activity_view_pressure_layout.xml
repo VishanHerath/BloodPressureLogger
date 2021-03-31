@@ -7,12 +7,24 @@
     android:padding="16dp"
     tools:context=".ViewPressureList">
 
+    <TextView
+        android:id="@+id/pressuresListView_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/all_records"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/pressuresListView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ListView
         android:id="@+id/pressuresListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
