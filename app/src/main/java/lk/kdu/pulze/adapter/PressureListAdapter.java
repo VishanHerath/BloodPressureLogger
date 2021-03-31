@@ -46,7 +46,7 @@ public class PressureListAdapter extends BaseAdapter {
             holder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.activity_pressure_list_adapter, null, true);
+            convertView = inflater.inflate(R.layout.activity_pressure_list_item, null, true);
 
             holder.sis = (TextView) convertView.findViewById(R.id.sys);
             holder.dias = (TextView) convertView.findViewById(R.id.dias);

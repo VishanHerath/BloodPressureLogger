@@ -24,13 +24,6 @@
             app:key="dark_mode"
             app:title="Dark Mode" />
 
-        <SwitchPreferenceCompat
-            app:dependency="dark_mode"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
-
     </PreferenceCategory>
 
 </PreferenceScreen>

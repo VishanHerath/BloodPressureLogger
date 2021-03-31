@@ -1,5 +1,6 @@
 package lk.kdu.pulze;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -8,6 +9,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class ViewPressureList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_pressure_list);
+        setContentView(R.layout.activity_view_pressure_layout);
 
         listCoordinator = findViewById(R.id.list_coordinator);
 
@@ -43,7 +45,31 @@ public class ViewPressureList extends AppCompatActivity {
         pressuresListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Snackbar.make(listCoordinator,String.valueOf(position),Snackbar.LENGTH_LONG).show();
+                Snackbar.make(listCoordinator, String.valueOf(position), Snackbar.LENGTH_LONG).show();
+            }
+        });
+
+        pressuresListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg, View v, int pos, long id) {
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(ViewPressureList.this);
+                builder.setTitle("Delete Record");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //..
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //..
+                    }
+                });
+                builder.setIcon(R.drawable.ic_baseline_info_24);
+                builder.setMessage("Are you sure you wanna delete?");
+                builder.show();
+                return true;
             }
         });
 
