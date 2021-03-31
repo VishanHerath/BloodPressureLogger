@@ -48,4 +48,6 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="exit">Exit</string>
+    <string name="overview">Overview</string>
+    <string name="all">All</string>
 </resources>

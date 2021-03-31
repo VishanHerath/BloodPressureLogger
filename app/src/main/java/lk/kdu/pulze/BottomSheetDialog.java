@@ -16,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -35,7 +34,7 @@ import java.util.Calendar;
 
 import lk.kdu.pulze.helper.DatabaseHelper;
 
-public class BottomSheetDialog extends BottomSheetDialogFragment implements AdapterView.OnItemClickListener {
+public class BottomSheetDialog extends BottomSheetDialogFragment {
     private Button dateTimePicker, bottomSheetButton;
     private TextInputEditText systole, diastole, pulse, note;
     private CoordinatorLayout bottom_container;
@@ -50,6 +49,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.bottom_sheet_layout,
                 container, false);
+
         dateTimePicker = v.findViewById(R.id.date_picker);
         systole = v.findViewById(R.id.systole);
         diastole = v.findViewById(R.id.diastole);
@@ -57,20 +57,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
         pulse = v.findViewById(R.id.pulse);
         bottom_container = v.findViewById(R.id.bottom_container);
         bottomSheetButton = v.findViewById(R.id.bottom_sheet_button);
-
         databaseHelper = new DatabaseHelper(getActivity());
-
-
-//        listView = requireActivity().findViewById(R.id.listView);
-//        dataSource = new RecordDataSource(getContext());
-//        dataSource.open();
-//
-//        List<Record> records = dataSource.getAllRecords();
-//        ArrayAdapter<Record> adapter = new ArrayAdapter<>(getContext(),
-//                android.R.layout.simple_list_item_1, records);
-//
-//        listView.setAdapter(adapter);
-//        listView.setOnItemClickListener(this);
 
 
         dateTimePicker.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +73,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
         bottomSheetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseHelper. addPressure(Integer.parseInt(systole.getText().toString()), Integer.parseInt(diastole.getText().toString()), Integer.parseInt(pulse.getText().toString()), date, note.getText().toString());
+                databaseHelper.addPressure(Integer.parseInt(systole.getText().toString()), Integer.parseInt(diastole.getText().toString()), Integer.parseInt(pulse.getText().toString()), date, note.getText().toString());
                 diastole.setText("");
                 systole.setText("");
                 pulse.setText("");
@@ -94,53 +81,10 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
                 Toast.makeText(getActivity(), "Added Successfully!", Toast.LENGTH_SHORT).show();
                 Intent viewList = new Intent(getActivity(), ViewPressureList.class);
                 startActivity(viewList);
-
             }
         });
-
-        /*******************************************************************************************************************/
-
-/*
-        bottomSheetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-//                    ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
-//
-//                    Random rnd = new Random();
-//                    int index = rnd.nextInt(possibleComments.length - 1);
-//                    String record = possibleComments[index];
-//                    Record newRecord = dataSource.createRecord(record);
-//                    adapter.add(newRecord);
-//
-//                    if (v.getId() == R.id.add) {
-//
-//                    } else if (v.getId() == R.id.item1) {
-//                        if (adapter.getCount() > 0) {
-//                            Record record = (Record) adapter.getItem(0);
-//                            dataSource.deleteRecord(record);
-//                            adapter.remove(record);
-//                        }
-//                    }
-//                    adapter.notifyDataSetChanged();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                Snackbar.make(bottom_container, "Record Added", Snackbar.LENGTH_LONG).setAction("UNDO", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                }).show();
-            }
-        });
-*/
-
         return v;
     }
-
 
 
     //Bring the Bottom Sheet above navigation buttons.
@@ -252,13 +196,4 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements Adap
         new DatePickerDialog(getContext(), dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-       // ArrayAdapter<Record> adapter = (ArrayAdapter<Record>) listView.getAdapter();
-       // if (position >= 0 && position < adapter.getCount()) {
-        //    Record record = (Record) adapter.getItem(position);
-       //     dataSource.deleteRecord(record);
-       //     adapter.remove(record);
-       // }
-    }
 }
