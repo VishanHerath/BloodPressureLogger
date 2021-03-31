@@ -12,6 +12,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,13 +22,13 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import android.text.TextWatcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import com.github.mikephil.charting.charts.LineChart;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -39,14 +40,12 @@ import lk.kdu.pulze.helper.DatabaseHelper;
 
 public class BottomSheetDialog extends BottomSheetDialogFragment {
     private Button dateTimePicker, bottomSheetButton;
-    private TextInputLayout systoleLayout,diastoleLayout,pulseLayout;
+    private TextInputLayout systoleLayout, diastoleLayout, pulseLayout;
     private TextInputEditText systole, diastole, pulse, note;
     private CoordinatorLayout bottom_container;
-
+    private LineChart lineChart;
     private DatabaseHelper databaseHelper;
     String date;
-
-    String[] possibleComments = {"Good", "Bad", "Not bad", "The worst", "Nice"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable
@@ -63,8 +62,11 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         diastole = v.findViewById(R.id.diastole);
         note = v.findViewById(R.id.note);
         pulse = v.findViewById(R.id.pulse);
-        bottom_container = v.findViewById(R.id.bottom_container);
+//        bottom_container = v.findViewById(R.id.bottom_container);
         bottomSheetButton = v.findViewById(R.id.bottom_sheet_button);
+
+        lineChart = requireActivity().findViewById(R.id.activity_main_lineChart);
+
         databaseHelper = new DatabaseHelper(getActivity());
 
         dateTimePicker.setOnClickListener(new View.OnClickListener() {
@@ -80,14 +82,14 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         bottomSheetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(validateFields()){
+                if (validateFields()) {
                     dateTimePicker.setError(null);
                     systole.setError(null);
                     diastole.setError(null);
                     pulse.setError(null);
 
                     databaseHelper.addPressure(Integer.parseInt(systole.getText().toString()), Integer.parseInt(diastole.getText().toString()), Integer.parseInt(pulse.getText().toString()), date, note.getText().toString());
-                    dateTimePicker.setText("Select Date and Time");
+                    dateTimePicker.setText("Select Date And Time");
                     diastole.setText("");
                     diastoleLayout.setError(null);
                     systole.setText("");
@@ -95,9 +97,11 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
                     pulse.setText("");
                     pulseLayout.setError(null);
                     note.setText("");
+
                     Toast.makeText(getActivity(), "Added Successfully!", Toast.LENGTH_SHORT).show();
                     Intent viewList = new Intent(getActivity(), ViewPressureList.class);
                     startActivity(viewList);
+                    getActivity().finish();
                 }
             }
         });
@@ -116,9 +120,9 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(systole.getText().toString().length() != 0){
+                if (systole.getText().toString().length() != 0) {
                     systoleLayout.setError(null);
-                }else{
+                } else {
                     systoleLayout.setError("Systole value is empty!");
                 }
             }
@@ -138,9 +142,9 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(diastole.getText().length() != 0){
+                if (diastole.getText().length() != 0) {
                     diastoleLayout.setError(null);
-                }else{
+                } else {
                     diastoleLayout.setError("Diastole value is empty!");
                 }
             }
@@ -160,10 +164,9 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(pulse.getText().length() != 0){
+                if (pulse.getText().length() != 0) {
                     pulseLayout.setError(null);
-                }
-                else{
+                } else {
                     pulseLayout.setError("Pulse value is empty!");
                 }
             }
@@ -227,25 +230,20 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-
                 TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         calendar.set(Calendar.MINUTE, minute);
-
                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yy HH:mm");
                         date = simpleDateFormat.format(calendar.getTime());
                         dateTimePicker.setText(date);
                     }
                 };
-
                 new TimePickerDialog(getContext(), timeSetListener, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show();
             }
         };
-
         new DatePickerDialog(getContext(), dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
-
     }
 
     private void showTimeDialog() {
@@ -280,28 +278,28 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         new DatePickerDialog(getContext(), dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-    private boolean validateFields(){
-        if(dateTimePicker.getText().equals("Select Date And Time")){
+    private boolean validateFields() {
+        if (dateTimePicker.getText().equals("Select Date And Time")) {
             dateTimePicker.setError("Please select date and time");
+            dateTimePicker.requestFocus();
             return false;
         }
-        else if(systole.getText().length() == 0){
+        if (systole.getText().length() == 0 || Integer.parseInt(String.valueOf(systole.getText()))> 300) {
             systoleLayout.requestFocus();
-            systoleLayout.setError("Systole value is empty!");
+            systoleLayout.setError("Systole value is invalid!");
             return false;
         }
-        else if(diastole.getText().length() == 0){
+        if (diastole.getText().length() == 0 || Integer.parseInt(String.valueOf(diastole.getText()))> 300) {
             diastoleLayout.requestFocus();
-            diastoleLayout.setError("Diastole value is empty!");
+            diastoleLayout.setError("Diastole value is invalid!");
             return false;
         }
-        else if(pulse.getText().length() == 0){
+        if (pulse.getText().length() == 0 || Integer.parseInt(String.valueOf(pulse.getText()))> 300) {
             pulseLayout.requestFocus();
-            pulseLayout.setError("Pulse value is empty!");
+            pulseLayout.setError("Pulse value is invalid!");
             return false;
         }
         return true;
     }
-
 
 }

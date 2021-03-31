@@ -1,6 +1,7 @@
 package lk.kdu.pulze;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,6 +10,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import com.github.mikephil.charting.charts.LineChart;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -25,6 +27,7 @@ public class ViewPressureList extends AppCompatActivity {
     private ArrayList<PressureModel> pressureModelArrayList;
     private PressureListAdapter customAdapter;
     private CoordinatorLayout listCoordinator;
+    LineChart lineChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class ViewPressureList extends AppCompatActivity {
         listCoordinator = findViewById(R.id.list_coordinator);
 
         pressuresListView = findViewById(R.id.pressuresListView);
+
+        lineChart = findViewById(R.id.activity_main_lineChart);
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -59,7 +64,13 @@ public class ViewPressureList extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //..
+                        PressureModel ids = (PressureModel) pressureModelArrayList.get(pos);
+                        databaseHelper.deletePressure(ids.getId());
+                        pressureModelArrayList.clear();
+                        pressureModelArrayList.addAll(databaseHelper.getPressure());
+                        customAdapter.notifyDataSetChanged();
+                        pressuresListView.invalidateViews();
+                        pressuresListView.refreshDrawableState();
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -75,5 +86,12 @@ public class ViewPressureList extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ViewPressureList.this, MainActivity.class));
+        finish();
     }
 }

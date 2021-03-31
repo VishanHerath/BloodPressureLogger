@@ -71,7 +71,7 @@ public class LineChartHelper implements OnChartValueSelectedListener {
 
         YAxis leftAxis = lineChart.getAxisLeft();
         leftAxis.setTextColor(Color.GRAY);
-        leftAxis.setAxisMaximum(100f);
+        leftAxis.setAxisMaximum(300f);
         leftAxis.setAxisMinimum(0f);
         leftAxis.setDrawGridLines(true);
         leftAxis.setGridColor(Color.GRAY);

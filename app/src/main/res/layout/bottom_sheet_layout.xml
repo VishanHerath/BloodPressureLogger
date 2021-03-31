@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minHeight="350dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -31,8 +30,6 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:height="64dp"
             android:gravity="center"
             android:text="@string/select_date_time"
@@ -46,8 +43,8 @@
         android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/systole_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/systole"
@@ -59,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:maxLength="10" />
+                android:maxLength="3" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,10 +68,10 @@
         android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/diastole_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/diastole_layout"
             android:hint="@string/diastole"
             app:errorEnabled="true"
             app:suffixText="@string/mmHg">
@@ -84,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:maxLength="10" />
+                android:maxLength="3" />
 
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -95,10 +92,10 @@
         android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pulse_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/pulse_layout"
             android:hint="@string/pulse"
             app:errorEnabled="true"
             app:suffixText="@string/mmHg">
@@ -108,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:maxLength="10" />
+                android:maxLength="3" />
 
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -121,10 +118,9 @@
 
 
         <TextView
-            android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
-            android:text="Add Note"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Add Note" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -150,10 +146,10 @@
         android:layout_marginTop="25dp"
         android:text="@string/add" />
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/bottom_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="64dp" />
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--        android:id="@+id/bottom_container"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:minHeight="64dp" />-->
 
 </LinearLayout>

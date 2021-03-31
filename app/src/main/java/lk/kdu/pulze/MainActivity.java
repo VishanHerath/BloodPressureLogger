@@ -1,22 +1,28 @@
 package lk.kdu.pulze;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.NestedScrollView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -103,6 +109,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.replace(R.id.container_fragment, new HomeFragment());
             fragmentTransaction.commit();
             toolbar.setTitle("Home");
+            floatingActionButton.show();
+            floatingActionButton.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open));
+
         }
         if (item.getItemId() == R.id.item2) {
             fragmentManager = getSupportFragmentManager();
@@ -110,6 +119,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.replace(R.id.container_fragment, new StatisticsFragment());
             fragmentTransaction.commit();
             toolbar.setTitle("Statistics");
+            floatingActionButton.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close));
+            floatingActionButton.hide();
         }
         if (item.getItemId() == R.id.item3) {
             startActivity(new Intent(MainActivity.this, SettingsActivity.class));
