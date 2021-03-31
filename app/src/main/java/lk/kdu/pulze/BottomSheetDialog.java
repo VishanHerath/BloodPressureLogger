@@ -171,12 +171,6 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
         return v;
     }
 
-
-   /* @Override
-    public void onResume() {
-        super.onResume();
-    }*/
-
     //Bring the Bottom Sheet above navigation buttons.
     @NonNull
     @Override
