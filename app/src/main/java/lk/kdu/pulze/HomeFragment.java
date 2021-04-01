@@ -74,6 +74,7 @@ public class HomeFragment extends Fragment {
         chipAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getActivity().finish();
                 startActivity(new Intent(getActivity(), ViewPressureList.class));
             }
         });
