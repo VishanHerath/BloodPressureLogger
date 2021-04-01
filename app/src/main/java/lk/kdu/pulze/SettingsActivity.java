@@ -1,5 +1,6 @@
 package lk.kdu.pulze;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -24,7 +25,6 @@ public class SettingsActivity extends AppCompatActivity implements SharedPrefere
 
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_baseline_arrow_back_24));
         toolbar.setTitle("Settings");
 
         if (savedInstanceState == null) {
