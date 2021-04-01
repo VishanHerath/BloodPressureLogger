@@ -30,15 +30,16 @@
         app:tabGravity="center"
         app:tabIndicatorHeight="0dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/sliderButton"
-        android:layout_width="0dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
         android:height="60dp"
-        android:background="@color/buttonBlue"
         android:text="@string/next"
-        android:textColor="@color/white"
+        app:cornerRadius="25dp"
+        app:icon="@drawable/ic_baseline_navigate_next_24"
+        app:iconGravity="end"
         app:layout_constraintBottom_toBottomOf="@+id/pagerIntroSlider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -51,4 +51,6 @@
     <string name="overview">Overview</string>
     <string name="all">All</string>
     <string name="all_records">All Records</string>
+    <string name="details">Details</string>
+    <string name="add_note">Add Note</string>
 </resources>
