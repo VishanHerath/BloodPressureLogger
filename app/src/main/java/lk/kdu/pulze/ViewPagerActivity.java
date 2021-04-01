@@ -13,13 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 
 import lk.kdu.pulze.adapter.SliderPagerAdapter;
 
 public class ViewPagerActivity extends AppCompatActivity {
     private ViewPager viewPager;
-    private Button button;
+    private MaterialButton button;
     private TabLayout tabLayout;
     private SliderPagerAdapter adapter;
 
@@ -83,8 +84,10 @@ public class ViewPagerActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 if (position == adapter.getCount() - 1) {
                     button.setText("Get Started");
+                    button.setIcon(null);
                 } else {
                     button.setText("Next");
+                    button.setIcon(getResources().getDrawable(R.drawable.ic_baseline_navigate_next_24));
                 }
 
             }

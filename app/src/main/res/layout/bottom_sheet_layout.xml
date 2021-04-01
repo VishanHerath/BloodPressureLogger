@@ -120,7 +120,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Note" />
+            android:text="@string/add_note" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -133,23 +133,18 @@
                 android:id="@+id/note"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        app:cornerRadius="20dp"
         android:id="@+id/bottom_sheet_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginTop="25dp"
         android:text="@string/add" />
-
-    <!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
-    <!--        android:id="@+id/bottom_container"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:minHeight="64dp" />-->
 
 </LinearLayout>

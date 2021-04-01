@@ -85,9 +85,7 @@ public class LineChartHelper implements OnChartValueSelectedListener {
         LineData data = lineChart.getData();
 
         if (data != null) {
-
             ILineDataSet set = data.getDataSetByIndex(setIndex);
-
             if (set == null) {
                 if (setIndex == 0) {
                     set = createSystoleSet();
@@ -97,7 +95,6 @@ public class LineChartHelper implements OnChartValueSelectedListener {
                 }
                 data.addDataSet(set);
             }
-
             data.addEntry(new Entry(set.getEntryCount(), value), setIndex);
             data.notifyDataChanged();
 
