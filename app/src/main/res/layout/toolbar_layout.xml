@@ -21,8 +21,6 @@
             android:elevation="4dp"
             app:layout_scrollFlags="enterAlways|snap"
             app:menu="@menu/top_app_bar"
-            app:navigationIcon="@drawable/ic_baseline_menu_24"
-            app:navigationIconTint="@color/secondaryColor"
             app:title="@string/app_name"
             tools:targetApi="lollipop" />
 

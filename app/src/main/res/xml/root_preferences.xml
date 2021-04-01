@@ -1,6 +1,5 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory app:title="Details">
-
+    <PreferenceCategory app:title="@string/details" app:iconSpaceReserved="false">
         <EditTextPreference
             app:icon="@drawable/ic_baseline_account_circle_24"
             app:key="name"
@@ -17,7 +16,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/sync_header">
+    <PreferenceCategory app:title="@string/sync_header" app:iconSpaceReserved="false">
 
         <SwitchPreferenceCompat
             app:icon="@drawable/ic_baseline_brightness_4_24"
