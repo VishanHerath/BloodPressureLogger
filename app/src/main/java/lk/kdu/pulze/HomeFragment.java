@@ -17,6 +17,7 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.google.android.material.chip.Chip;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import lk.kdu.pulze.adapter.PressureListAdapter;
 import lk.kdu.pulze.helper.DatabaseHelper;
@@ -53,11 +54,11 @@ public class HomeFragment extends Fragment {
         pressureModelArrayList = databaseHelper.getPressure();
 
         for (PressureModel model : pressureModelArrayList) {
-            lineChartHelper.addEntry(model.getSystolic(), 0);
-            lineChartHelper.addEntry(model.getDiastolic(), 1);
+            lineChartHelper.addEntry(model.getSystolic(), 0); //Index 0 is Systolic
+            lineChartHelper.addEntry(model.getDiastolic(), 1); //Index 1 is Diastolic
         }
 
-
+        Collections.reverse(pressureModelArrayList);
         customAdapter = new PressureListAdapter(getContext(), pressureModelArrayList);
         homeListView.setAdapter(customAdapter);
 

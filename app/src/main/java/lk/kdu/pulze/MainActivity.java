@@ -73,16 +73,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                if (scrollY > oldScrollY) {
-                    floatingActionButton.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close));
+                // the delay of the extension of the FAB is set for 12 items
+                if (scrollY > oldScrollY + 12 && floatingActionButton.isShown()) {
+                    floatingActionButton.shrink();
+                }
+
+                // the delay of the extension of the FAB is set for 12 items
+                if (scrollY < oldScrollY - 12 && !floatingActionButton.isShown()) {
+                    floatingActionButton.show();
+                }
+
+                if (v.getChildAt(0).getBottom()
+                        <= (v.getHeight() + v.getScrollY())) {
+                    //scroll view is at bottom
                     floatingActionButton.hide();
                 }
 
+                // if the nestedScrollView is at the first item of the list then the
+                // floating action should be in show state
                 if (scrollY == 0) {
                     floatingActionButton.show();
-                    floatingActionButton.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open));
+                    floatingActionButton.extend();
                 }
-
             }
         });
 
