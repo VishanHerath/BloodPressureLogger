@@ -148,8 +148,8 @@ public class GetDetailsActivity extends AppCompatActivity {
             nameLayout.setError("Please enter your name");
             return false;
         }
-        if (mPickDateButton.getText().equals("Select Birthday")) {
-            mPickDateButton.setError("Please enter your birthday");
+        if (mPickDateButton.getText().equals("Select Date Of Birth")) {
+            mPickDateButton.setError("Please enter your Date Of Birth");
             return false;
         }
         return true;
