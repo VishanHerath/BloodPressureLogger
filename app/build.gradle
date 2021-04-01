@@ -20,12 +20,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        applicationVariants.all{
+        applicationVariants.all {
             variant ->
-                variant.outputs.each{
+                variant.outputs.each {
                     output ->
                         def name = "Pulze ${variant.versionName}.apk"
-                        output.outputFileName=name
+                        output.outputFileName = name
                 }
         }
     }

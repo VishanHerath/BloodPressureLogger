@@ -7,21 +7,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.github.mikephil.charting.charts.LineChart;
-
 import java.util.ArrayList;
 
 import lk.kdu.pulze.model.PressureModel;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    // database name
-    public static String DATABASE_NAME = "blood_pressure_logger";
     private static final int DATABASE_VERSION = 1;
-
     // table name
     private static final String TABLE_NAME = "pressure";
-
     // column names
     private static final String KEY_ID = "id";
     private static final String SYSTOLIC = "systolic";
@@ -29,10 +23,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String PULSE = "pulse";
     private static final String DATE = "date";
     private static final String NOTES = "notes";
-
     // query to create the table
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + KEY_ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT," + SYSTOLIC + " TEXT, "+ DIASTOLIC + " TEXT, "+ PULSE + " TEXT, "+ DATE + " TEXT, "+ NOTES + " TEXT  );";
+            + " INTEGER PRIMARY KEY AUTOINCREMENT," + SYSTOLIC + " TEXT, " + DIASTOLIC + " TEXT, " + PULSE + " TEXT, " + DATE + " TEXT, " + NOTES + " TEXT  );";
+    // database name
+    public static String DATABASE_NAME = "blood_pressure_logger";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

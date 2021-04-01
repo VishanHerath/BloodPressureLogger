@@ -2,7 +2,6 @@ package lk.kdu.pulze;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -19,9 +18,9 @@ public class SplashActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        if(sharedPreferences.getBoolean("dark_mode",false)){
+        if (sharedPreferences.getBoolean("dark_mode", false)) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }else{
+        } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
@@ -49,8 +48,7 @@ public class SplashActivity extends AppCompatActivity {
                     // Check if we need to display our OnBoardingSupportFragment
                     if (!sharedPreferences.getBoolean("flag", false)) {
                         startActivity(new Intent(SplashActivity.this, ViewPagerActivity.class));
-                    }
-                    else{
+                    } else {
                         startActivity(new Intent(SplashActivity.this, MainActivity.class));
                     }
 

@@ -5,11 +5,12 @@
     <scale
         android:fromXScale="0"
         android:fromYScale="0"
-        android:toXScale="1.0"
-        android:toYScale="1.0"
+        android:pivotX="50%"
         android:pivotY="50%"
-        android:pivotX="50%"/>
+        android:toXScale="1.0"
+        android:toYScale="1.0" />
 
-    <alpha android:fromAlpha="0"
-        android:toAlpha="1.0"/>
+    <alpha
+        android:fromAlpha="0"
+        android:toAlpha="1.0" />
 </set>

@@ -13,6 +13,7 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 
 public class StatisticsFragment extends Fragment {
     ExtendedFloatingActionButton extendedFloatingActionButton;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

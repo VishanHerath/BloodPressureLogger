@@ -39,13 +39,13 @@ import java.util.Calendar;
 import lk.kdu.pulze.helper.DatabaseHelper;
 
 public class BottomSheetDialog extends BottomSheetDialogFragment {
+    String date;
     private Button dateTimePicker, bottomSheetButton;
     private TextInputLayout systoleLayout, diastoleLayout, pulseLayout;
     private TextInputEditText systole, diastole, pulse, note;
     private CoordinatorLayout bottom_container;
     private LineChart lineChart;
     private DatabaseHelper databaseHelper;
-    String date;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable
@@ -284,17 +284,17 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
             dateTimePicker.requestFocus();
             return false;
         }
-        if (systole.getText().length() == 0 || Integer.parseInt(String.valueOf(systole.getText()))> 300) {
+        if (systole.getText().length() == 0 || Integer.parseInt(String.valueOf(systole.getText())) > 300) {
             systoleLayout.requestFocus();
             systoleLayout.setError("Systole value is invalid!");
             return false;
         }
-        if (diastole.getText().length() == 0 || Integer.parseInt(String.valueOf(diastole.getText()))> 300) {
+        if (diastole.getText().length() == 0 || Integer.parseInt(String.valueOf(diastole.getText())) > 300) {
             diastoleLayout.requestFocus();
             diastoleLayout.setError("Diastole value is invalid!");
             return false;
         }
-        if (pulse.getText().length() == 0 || Integer.parseInt(String.valueOf(pulse.getText()))> 300) {
+        if (pulse.getText().length() == 0 || Integer.parseInt(String.valueOf(pulse.getText())) > 300) {
             pulseLayout.requestFocus();
             pulseLayout.setError("Pulse value is invalid!");
             return false;

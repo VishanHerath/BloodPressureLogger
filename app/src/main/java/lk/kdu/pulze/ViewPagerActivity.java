@@ -56,9 +56,10 @@ public class ViewPagerActivity extends AppCompatActivity {
         changeStatusBarColor();
 
         button.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
                 if (viewPager.getCurrentItem() < adapter.getCount()) {
-                    if(viewPager.getCurrentItem() == 3 && button.getText() == "Get Started"){
+                    if (viewPager.getCurrentItem() == 3 && button.getText() == "Get Started") {
                         startActivity(new Intent(ViewPagerActivity.this, GetDetailsActivity.class));
                         finish();
                     }
@@ -78,7 +79,8 @@ public class ViewPagerActivity extends AppCompatActivity {
 
             }
 
-            @Override public void onPageSelected(int position) {
+            @Override
+            public void onPageSelected(int position) {
                 if (position == adapter.getCount() - 1) {
                     button.setText("Get Started");
                 } else {
@@ -87,7 +89,8 @@ public class ViewPagerActivity extends AppCompatActivity {
 
             }
 
-            @Override public void onPageScrollStateChanged(int state) {
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
             }
         });
