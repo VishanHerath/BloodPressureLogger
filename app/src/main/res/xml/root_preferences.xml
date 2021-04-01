@@ -9,9 +9,9 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            app:icon="@drawable/ic_baseline_accessibility_24"
             app:entries="@array/gender_entries"
             app:entryValues="@array/gender_values"
+            app:icon="@drawable/ic_baseline_accessibility_24"
             app:key="gender"
             app:title="Gender" />
 

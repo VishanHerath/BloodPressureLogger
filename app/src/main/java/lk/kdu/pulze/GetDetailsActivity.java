@@ -100,14 +100,13 @@ public class GetDetailsActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(name.getText().length() != 0){
+                if (name.getText().length() != 0) {
                     nameLayout.setError(null);
-                }else{
+                } else {
                     nameLayout.setError("Please enter your name");
                 }
             }
         });
-
 
 
         //Gender items

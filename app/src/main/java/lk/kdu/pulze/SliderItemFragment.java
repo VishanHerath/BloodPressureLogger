@@ -21,18 +21,18 @@ public class SliderItemFragment extends Fragment {
     // prepare all title ids arrays
     @StringRes
     private static final int[] PAGE_TITLES =
-            new int[] { R.string.discover, R.string.shop, R.string.offers, R.string.reward };
+            new int[]{R.string.discover, R.string.shop, R.string.offers, R.string.reward};
 
     // prepare all subtitle ids arrays
     @StringRes
     private static final int[] PAGE_TEXT =
-            new int[] {
+            new int[]{
                     R.string.discover_text, R.string.shop_text, R.string.offers_text, R.string.reward_text
             };
     // prepare all subtitle images arrays
     @StringRes
     private static final int[] PAGE_IMAGE =
-            new int[] {
+            new int[]{
                     R.drawable.ic_discover, R.drawable.ic_deals, R.drawable.ic_offers, R.drawable.ic_reward
             };
 
@@ -67,7 +67,8 @@ public class SliderItemFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_slider_item, container, false);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP) @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 

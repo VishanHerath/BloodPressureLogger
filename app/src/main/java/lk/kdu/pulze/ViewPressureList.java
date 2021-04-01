@@ -24,10 +24,10 @@ public class ViewPressureList extends AppCompatActivity {
 
     ListView pressuresListView;
     DatabaseHelper databaseHelper;
+    LineChart lineChart;
     private ArrayList<PressureModel> pressureModelArrayList;
     private PressureListAdapter customAdapter;
     private CoordinatorLayout listCoordinator;
-    LineChart lineChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

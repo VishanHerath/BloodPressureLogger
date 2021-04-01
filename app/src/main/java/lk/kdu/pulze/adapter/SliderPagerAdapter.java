@@ -12,11 +12,14 @@ public class SliderPagerAdapter extends FragmentPagerAdapter {
         super(fm, behavior);
     }
 
-    @NonNull @Override public Fragment getItem(int position) {
+    @NonNull
+    @Override
+    public Fragment getItem(int position) {
         return SliderItemFragment.newInstance(position);
     }
 
-    @Override public int getCount() {
+    @Override
+    public int getCount() {
         return 4;
     }
 }
