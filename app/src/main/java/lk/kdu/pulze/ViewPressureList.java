@@ -64,8 +64,8 @@ public class ViewPressureList extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        PressureModel ids = (PressureModel) pressureModelArrayList.get(pos);
-                        databaseHelper.deletePressure(ids.getId());
+                        PressureModel item = (PressureModel) pressureModelArrayList.get(pos);
+                        databaseHelper.deletePressure(item.getId());
                         pressureModelArrayList.clear();
                         pressureModelArrayList.addAll(databaseHelper.getPressure());
                         customAdapter.notifyDataSetChanged();

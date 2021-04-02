@@ -270,17 +270,17 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
             dateTimePicker.requestFocus();
             return false;
         }
-        if (systole.getText().length() == 0 || Integer.parseInt(String.valueOf(systole.getText())) > 300) {
+        if (systole.getText().length() == 0 || Integer.parseInt(String.valueOf(systole.getText())) > 500) {
             systoleLayout.requestFocus();
             systoleLayout.setError("Systole value is invalid!");
             return false;
         }
-        if (diastole.getText().length() == 0 || Integer.parseInt(String.valueOf(diastole.getText())) > 300) {
+        if (diastole.getText().length() == 0 || Integer.parseInt(String.valueOf(diastole.getText())) > 500) {
             diastoleLayout.requestFocus();
             diastoleLayout.setError("Diastole value is invalid!");
             return false;
         }
-        if (pulse.getText().length() == 0 || Integer.parseInt(String.valueOf(pulse.getText())) > 300) {
+        if (pulse.getText().length() == 0 || Integer.parseInt(String.valueOf(pulse.getText())) > 500) {
             pulseLayout.requestFocus();
             pulseLayout.setError("Pulse value is invalid!");
             return false;
