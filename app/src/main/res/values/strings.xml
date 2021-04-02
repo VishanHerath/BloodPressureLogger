@@ -53,4 +53,6 @@
     <string name="all_records">All Records</string>
     <string name="details">Details</string>
     <string name="add_note">Add Note</string>
+    <string name="lowest">Lowest</string>
+    <string name="highest">Highest</string>
 </resources>

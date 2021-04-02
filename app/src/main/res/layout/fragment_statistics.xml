@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -66,7 +67,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Systole - Last Month"
+                            android:text="@string/systole"
                             android:textAppearance="?attr/textAppearanceHeadline6" />
 
                         <View
@@ -96,7 +97,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:layout_weight="1"
-                                android:text="Lowest"
+                                android:text="@string/lowest"
                                 android:textAppearance="?attr/textAppearanceBody2"
                                 android:textColor="?android:attr/textColorSecondary" />
                         </LinearLayout>
@@ -113,8 +114,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="132"
-                                android:textColor="@color/warn" />
+                                android:textColor="@color/warn"
+                                tools:text="132" />
 
                             <TextView
                                 android:id="@+id/systole_low"
@@ -122,8 +123,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="132"
-                                android:textColor="@color/primaryColor" />
+                                android:textColor="@color/primaryColor"
+                                tools:text="132" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -153,7 +154,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Diastole - Last Month"
+                            android:text="@string/diastole"
                             android:textAppearance="?attr/textAppearanceHeadline6" />
 
                         <View
@@ -174,7 +175,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:layout_weight="1"
-                                android:text="Highest"
+                                android:text="@string/highest"
                                 android:textAppearance="?attr/textAppearanceBody2"
                                 android:textColor="?android:attr/textColorSecondary" />
 
@@ -183,7 +184,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:layout_weight="1"
-                                android:text="Lowest"
+                                android:text="@string/lowest"
                                 android:textAppearance="?attr/textAppearanceBody2"
                                 android:textColor="?android:attr/textColorSecondary" />
                         </LinearLayout>
@@ -200,8 +201,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="132"
-                                android:textColor="@color/warn" />
+                                android:textColor="@color/warn"
+                                tools:text="132" />
 
                             <TextView
                                 android:id="@+id/diastole_low"
@@ -209,8 +210,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="132"
-                                android:textColor="@color/primaryColor" />
+                                android:textColor="@color/primaryColor"
+                                tools:text="132" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -240,7 +241,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pulse - Last Month"
+                            android:text="@string/pulse"
                             android:textAppearance="?attr/textAppearanceHeadline6" />
 
                         <View
@@ -261,7 +262,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:layout_weight="1"
-                                android:text="Highest"
+                                android:text="@string/highest"
                                 android:textAppearance="?attr/textAppearanceBody2"
                                 android:textColor="?android:attr/textColorSecondary" />
 
@@ -270,7 +271,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:layout_weight="1"
-                                android:text="Lowest"
+                                android:text="@string/lowest"
                                 android:textAppearance="?attr/textAppearanceBody2"
                                 android:textColor="?android:attr/textColorSecondary" />
                         </LinearLayout>
@@ -287,8 +288,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="132"
-                                android:textColor="@color/warn" />
+                                android:textColor="@color/warn"
+                                tools:text="132" />
 
                             <TextView
                                 android:id="@+id/pulse_low"
@@ -296,8 +297,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="132"
-                                android:textColor="@color/primaryColor" />
+                                android:textColor="@color/primaryColor"
+                                tools:text="132" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
