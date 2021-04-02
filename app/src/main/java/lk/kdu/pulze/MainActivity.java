@@ -2,15 +2,16 @@ package lk.kdu.pulze;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
@@ -107,31 +108,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
-        if (item.getItemId() == R.id.item1) {
-            fragmentManager = getSupportFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment, new HomeFragment());
-            fragmentTransaction.commit();
-            toolbar.setTitle("Home");
-            floatingActionButton.show();
-            floatingActionButton.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open));
-
-        }
-        if (item.getItemId() == R.id.item2) {
-            fragmentManager = getSupportFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment, new StatisticsFragment());
-            fragmentTransaction.commit();
-            toolbar.setTitle("Statistics");
-            floatingActionButton.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close));
-            floatingActionButton.hide();
-        }
-        if (item.getItemId() == R.id.item3) {
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-        }
         //close navigation drawer
-        drawerLayout.closeDrawers();
+        drawerLayout.closeDrawer(GravityCompat.START);
+        // Handle navigation view item clicks here.
+
+        //Post Delay to open fragment after the drawer is closed.
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getSupportFragmentManager().popBackStackImmediate (null, 0);
+
+                if (item.getItemId() == R.id.item1) {
+                    getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(
+                                    R.anim.slide_in,  // enter
+                                    R.anim.fade_out,  // exit
+                                    R.anim.fade_in,   // popEnter
+                                    R.anim.slide_out  // popExit
+                            )
+                            .replace(R.id.container_fragment, new HomeFragment())
+                            .commit();
+                }
+                if (item.getItemId() == R.id.item2) {
+                    getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(
+                                    R.anim.slide_in,  // enter
+                                    R.anim.fade_out,  // exit
+                                    R.anim.fade_in,   // popEnter
+                                    R.anim.slide_out  // popExit
+                            )
+                            .addToBackStack(null)
+                            .replace(R.id.container_fragment, new StatisticsFragment())
+                            .commit();
+                }
+                if (item.getItemId() == R.id.item3) {
+                    startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                }
+            }
+        }, 450);
+
+
         return true;
     }
 
@@ -146,4 +163,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
+
+
 }

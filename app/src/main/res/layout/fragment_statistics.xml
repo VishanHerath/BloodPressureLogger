@@ -36,8 +36,8 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -45,11 +45,11 @@
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
-                app:cardElevation="5dp"
-                app:cardCornerRadius="10dp"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -67,60 +67,61 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Systole - Last Month"
-                            android:textAppearance="?attr/textAppearanceHeadline6"
-                            />
+                            android:textAppearance="?attr/textAppearanceHeadline6" />
 
                         <View
-                            android:layout_marginTop="8dp"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@android:color/darker_gray"/>
+                            android:layout_marginTop="8dp"
+                            android:background="@android:color/darker_gray" />
 
                         <LinearLayout
-                            android:layout_marginTop="8dp"
-                            android:weightSum="2"
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
                             <TextView
-                                android:layout_weight="1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
+                                android:layout_weight="1"
                                 android:text="Highest"
                                 android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary"
-                                />
+                                android:textColor="?android:attr/textColorSecondary" />
+
                             <TextView
-                                android:layout_weight="1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
+                                android:layout_weight="1"
                                 android:text="Lowest"
                                 android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary"
-                                />
+                                android:textColor="?android:attr/textColorSecondary" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:weightSum="2"
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
                             <TextView
-                                android:layout_weight="1"
+                                style="@style/TextAppearance.MaterialComponents.Headline4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/warn"
-                                style="@style/TextAppearance.MaterialComponents.Headline4"
-                                android:text="132"/>
-                            <TextView
                                 android:layout_weight="1"
+                                android:text="132"
+                                android:textColor="@color/warn" />
+
+                            <TextView
+                                style="@style/TextAppearance.MaterialComponents.Headline4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/primaryColor"
-                                style="@style/TextAppearance.MaterialComponents.Headline4"
-                                android:text="132"/>
+                                android:layout_weight="1"
+                                android:text="132"
+                                android:textColor="@color/primaryColor" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -129,11 +130,11 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                app:cardElevation="5dp"
-                app:cardCornerRadius="10dp"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -151,60 +152,61 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Systole - Last Month"
-                            android:textAppearance="?attr/textAppearanceHeadline6"
-                            />
+                            android:textAppearance="?attr/textAppearanceHeadline6" />
 
                         <View
-                            android:layout_marginTop="8dp"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@android:color/darker_gray"/>
+                            android:layout_marginTop="8dp"
+                            android:background="@android:color/darker_gray" />
 
                         <LinearLayout
-                            android:layout_marginTop="8dp"
-                            android:weightSum="2"
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
                             <TextView
-                                android:layout_weight="1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
+                                android:layout_weight="1"
                                 android:text="Highest"
                                 android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary"
-                                />
+                                android:textColor="?android:attr/textColorSecondary" />
+
                             <TextView
-                                android:layout_weight="1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
+                                android:layout_weight="1"
                                 android:text="Lowest"
                                 android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary"
-                                />
+                                android:textColor="?android:attr/textColorSecondary" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:weightSum="2"
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
                             <TextView
-                                android:layout_weight="1"
+                                style="@style/TextAppearance.MaterialComponents.Headline4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/warn"
-                                style="@style/TextAppearance.MaterialComponents.Headline4"
-                                android:text="132"/>
-                            <TextView
                                 android:layout_weight="1"
+                                android:text="132"
+                                android:textColor="@color/warn" />
+
+                            <TextView
+                                style="@style/TextAppearance.MaterialComponents.Headline4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/primaryColor"
-                                style="@style/TextAppearance.MaterialComponents.Headline4"
-                                android:text="132"/>
+                                android:layout_weight="1"
+                                android:text="132"
+                                android:textColor="@color/primaryColor" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -213,11 +215,11 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                app:cardElevation="5dp"
-                app:cardCornerRadius="10dp"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -235,60 +237,61 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Systole - Last Month"
-                            android:textAppearance="?attr/textAppearanceHeadline6"
-                            />
+                            android:textAppearance="?attr/textAppearanceHeadline6" />
 
                         <View
-                            android:layout_marginTop="8dp"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@android:color/darker_gray"/>
+                            android:layout_marginTop="8dp"
+                            android:background="@android:color/darker_gray" />
 
                         <LinearLayout
-                            android:layout_marginTop="8dp"
-                            android:weightSum="2"
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
                             <TextView
-                                android:layout_weight="1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
+                                android:layout_weight="1"
                                 android:text="Highest"
                                 android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary"
-                                />
+                                android:textColor="?android:attr/textColorSecondary" />
+
                             <TextView
-                                android:layout_weight="1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
+                                android:layout_weight="1"
                                 android:text="Lowest"
                                 android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary"
-                                />
+                                android:textColor="?android:attr/textColorSecondary" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:weightSum="2"
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
                             <TextView
-                                android:layout_weight="1"
+                                style="@style/TextAppearance.MaterialComponents.Headline4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/warn"
-                                style="@style/TextAppearance.MaterialComponents.Headline4"
-                                android:text="132"/>
-                            <TextView
                                 android:layout_weight="1"
+                                android:text="132"
+                                android:textColor="@color/warn" />
+
+                            <TextView
+                                style="@style/TextAppearance.MaterialComponents.Headline4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/primaryColor"
-                                style="@style/TextAppearance.MaterialComponents.Headline4"
-                                android:text="132"/>
+                                android:layout_weight="1"
+                                android:text="132"
+                                android:textColor="@color/primaryColor" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
