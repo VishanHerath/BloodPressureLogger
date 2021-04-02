@@ -58,8 +58,6 @@ public class StatisticsFragment extends Fragment {
         databaseHelper = new DatabaseHelper(getContext());
         pressureModelArrayList = databaseHelper.getPressure();
 
-        setAllSelected();
-
 
         for (PressureModel i : pressureModelArrayList) {
             Date date = null;
@@ -77,6 +75,9 @@ public class StatisticsFragment extends Fragment {
                 }
             }
         }
+
+        setAllSelected();
+        updateText();
 
 
         all.setOnClickListener(new View.OnClickListener() {
