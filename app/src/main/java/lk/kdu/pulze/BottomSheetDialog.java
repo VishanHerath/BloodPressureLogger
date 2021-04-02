@@ -83,21 +83,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 if (validateFields()) {
-                    dateTimePicker.setError(null);
-                    systole.setError(null);
-                    diastole.setError(null);
-                    pulse.setError(null);
-
                     databaseHelper.addPressure(Integer.parseInt(systole.getText().toString()), Integer.parseInt(diastole.getText().toString()), Integer.parseInt(pulse.getText().toString()), date, note.getText().toString());
-                    dateTimePicker.setText("Select Date And Time");
-                    diastole.setText("");
-                    diastoleLayout.setError(null);
-                    systole.setText("");
-                    systoleLayout.setError(null);
-                    pulse.setText("");
-                    pulseLayout.setError(null);
-                    note.setText("");
-
                     Toast.makeText(getActivity(), "Added Successfully!", Toast.LENGTH_SHORT).show();
                     Intent viewList = new Intent(getActivity(), ViewPressureList.class);
                     startActivity(viewList);
