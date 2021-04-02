@@ -78,18 +78,20 @@ public class LineChartHelper implements OnChartValueSelectedListener {
         xl.setEnabled(true);
         xl.setGranularity(1);
 
-        ValueFormatter valueFormatter = new ValueFormatter() {
-            @Override
-            public String getFormattedValue(float value) {
-                if (value >= 0) {
-                    return pressureModels.get((int)value).getDatetime();
-                } else {
-                    return "";
-                }
-            }
-        };
 
-        lineChart.getXAxis().setValueFormatter(valueFormatter);
+
+//        ValueFormatter valueFormatter = new ValueFormatter() {
+//            @Override
+//            public String getFormattedValue(float value) {
+//                if (value >= 0) {
+//                    return pressureModels.get((int)value).getDatetime();
+//                } else {
+//                    return "";
+//                }
+//            }
+//        };
+
+//        lineChart.getXAxis().setValueFormatter(valueFormatter);
 
 
         YAxis leftAxis = lineChart.getAxisLeft();

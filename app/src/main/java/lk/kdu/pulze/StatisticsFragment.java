@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +17,7 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -57,6 +57,13 @@ public class StatisticsFragment extends Fragment {
 
         databaseHelper = new DatabaseHelper(getContext());
         pressureModelArrayList = databaseHelper.getPressure();
+        Date current = new Date();
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            LocalDate thisMonth = LocalDate.now();
+            LocalDate earlier = LocalDate.now().minusMonths(3);
+            three_month.setText(earlier.getMonth() + " - " + thisMonth.getMonth());
+        }
 
 
         for (PressureModel i : pressureModelArrayList) {
@@ -66,11 +73,12 @@ public class StatisticsFragment extends Fragment {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            Date current = new Date();
+
             if (date != null) {
-                if (dateDifference(date, current) > 31 && dateDifference(date, current) <= 62) {
+                if (dateDifference(date, current) <= 30) {
                     this.lastMonthArray.add(i);
-                } else if (dateDifference(date, current) <= 93) {
+                }
+                if (dateDifference(date, current) <= 90) {
                     this.lastThreeMonthArray.add(i);
                 }
             }
