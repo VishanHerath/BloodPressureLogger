@@ -8,46 +8,213 @@
     <com.google.android.material.chip.ChipGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.google.android.material.chip.Chip
             android:id="@+id/all_chip"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="All"/>
+            android:text="All" />
+
         <com.google.android.material.chip.Chip
             android:id="@+id/last_month_chip"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last Month"/>
+            android:text="Last Month" />
+
         <com.google.android.material.chip.Chip
             android:id="@+id/last_three_month_chip"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last 3 Months"/>
+            android:text="Last 3 Months" />
+
     </com.google.android.material.chip.ChipGroup>
 
-
-    <com.google.android.material.card.MaterialCardView
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_margin="8dp"
-        app:cardElevation="10dp"
-        app:strokeWidth="1dp">
+        android:layout_height="180dp"
+        android:scrollbars="none"
+        android:layout_marginTop="8dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="16dp"
-                android:paddingTop="16dp"
-                android:text="Systole - Last Month"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="300dp"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:layout_height="match_parent"
+                app:cardElevation="10dp"
+                app:strokeWidth="1dp"
+                android:focusable="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="Systole - Last Month"
+                    android:textAppearance="?attr/textAppearanceHeadline6"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Highest"
+                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceHeadline6"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textStyle="bold"
+                        android:text="Lowest"
+                        android:textAppearance="?attr/textAppearanceHeadline6"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColor="#f73434"
+                        android:textStyle="bold"
+                        android:text="110"
+                        android:textAppearance="?attr/textAppearanceHeadline4"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColor="#32a852"
+                        android:textStyle="bold"
+                        android:text="70"
+                        android:textAppearance="?attr/textAppearanceHeadline4"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-    </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="300dp"
+                android:layout_margin="8dp"
+                android:layout_height="match_parent"
+                app:cardElevation="10dp"
+                app:strokeWidth="1dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="Diastole - Last Month"
+                    android:textAppearance="?attr/textAppearanceHeadline6"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Highest"
+                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceHeadline6"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textStyle="bold"
+                        android:text="Lowest"
+                        android:textAppearance="?attr/textAppearanceHeadline6"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColor="#f73434"
+                        android:textStyle="bold"
+                        android:text="110"
+                        android:textAppearance="?attr/textAppearanceHeadline4"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColor="#32a852"
+                        android:textStyle="bold"
+                        android:text="70"
+                        android:textAppearance="?attr/textAppearanceHeadline4"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="300dp"
+                android:layout_margin="8dp"
+                android:layout_height="match_parent"
+                app:cardElevation="10dp"
+                app:strokeWidth="1dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="Pulse - Last Month"
+                    android:textAppearance="?attr/textAppearanceHeadline6"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="Highest"
+                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceHeadline6"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textStyle="bold"
+                        android:text="Lowest"
+                        android:textAppearance="?attr/textAppearanceHeadline6"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColor="#f73434"
+                        android:textStyle="bold"
+                        android:text="110"
+                        android:textAppearance="?attr/textAppearanceHeadline4"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:textColor="#32a852"
+                        android:textStyle="bold"
+                        android:text="70"
+                        android:textAppearance="?attr/textAppearanceHeadline4"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -55,7 +222,6 @@
         android:layout_margin="8dp"
         app:cardElevation="10dp"
         app:strokeWidth="1dp">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,12 +240,7 @@
                 android:id="@+id/activity_main_lineChart"
                 android:layout_width="match_parent"
                 android:layout_height="300dp" />
-
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
-
-
-
-
 </LinearLayout>
