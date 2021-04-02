@@ -1,6 +1,5 @@
 package lk.kdu.pulze;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -20,11 +19,8 @@ public class SettingsActivity extends AppCompatActivity implements SharedPrefere
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
-
         toolbar = findViewById(R.id.topAppBar);
-
         setSupportActionBar(toolbar);
-
         toolbar.setTitle("Settings");
 
         if (savedInstanceState == null) {

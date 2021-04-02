@@ -99,13 +99,13 @@
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.button.MaterialButton
-        app:cornerRadius="25dp"
         android:id="@+id/startBtn"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:height="60dp"
         android:text="@string/start_pulze"
+        app:cornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="@+id/pick_date_btn"
         app:layout_constraintStart_toStartOf="@+id/pick_date_btn"
         app:layout_constraintTop_toTopOf="@+id/pick_date_btn" />

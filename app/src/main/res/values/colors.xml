@@ -10,6 +10,5 @@
     <color name="grey">#434343</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="buttonBlue">#6200ee</color>
-    <color name="card_color1">#eb4034</color>
+    <color name="warn">#C62828</color>
 </resources>
