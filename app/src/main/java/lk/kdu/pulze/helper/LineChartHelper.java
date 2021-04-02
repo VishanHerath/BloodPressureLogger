@@ -10,16 +10,23 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
+import java.util.ArrayList;
+
+import lk.kdu.pulze.model.PressureModel;
+
 public class LineChartHelper implements OnChartValueSelectedListener {
 
     private LineChart lineChart;
+    private  ArrayList<PressureModel> pressureModels;
 
-    public LineChartHelper(LineChart lineChart) {
+    public LineChartHelper(LineChart lineChart, ArrayList<PressureModel> models) {
         this.lineChart = lineChart;
+        this.pressureModels = models;
     }
 
     public void showLineChart() {
@@ -57,7 +64,8 @@ public class LineChartHelper implements OnChartValueSelectedListener {
 
         // get the legend (only possible after setting data)
         Legend l = lineChart.getLegend();
-
+        //Increase Legend Gap
+        lineChart.setExtraOffsets(0f,0f,0f,15f);
         // modify the legend ...
         l.setForm(Legend.LegendForm.LINE);
         l.setTextColor(Color.GRAY);
@@ -68,10 +76,25 @@ public class LineChartHelper implements OnChartValueSelectedListener {
         xl.setDrawGridLines(false);
         xl.setAvoidFirstLastClipping(true);
         xl.setEnabled(true);
+        xl.setGranularity(1);
+
+        ValueFormatter valueFormatter = new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                if (value >= 0) {
+                    return pressureModels.get((int)value).getDatetime();
+                } else {
+                    return "";
+                }
+            }
+        };
+
+        lineChart.getXAxis().setValueFormatter(valueFormatter);
+
 
         YAxis leftAxis = lineChart.getAxisLeft();
         leftAxis.setTextColor(Color.GRAY);
-        leftAxis.setAxisMaximum(300f);
+        leftAxis.setAxisMaximum(500f);
         leftAxis.setAxisMinimum(0f);
         leftAxis.setDrawGridLines(true);
         leftAxis.setGridColor(Color.GRAY);

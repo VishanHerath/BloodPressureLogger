@@ -108,6 +108,7 @@
                             android:weightSum="2">
 
                             <TextView
+                                android:id="@+id/systole_high"
                                 style="@style/TextAppearance.MaterialComponents.Headline4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -116,6 +117,7 @@
                                 android:textColor="@color/warn" />
 
                             <TextView
+                                android:id="@+id/systole_low"
                                 style="@style/TextAppearance.MaterialComponents.Headline4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -151,7 +153,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Systole - Last Month"
+                            android:text="Diastole - Last Month"
                             android:textAppearance="?attr/textAppearanceHeadline6" />
 
                         <View
@@ -193,6 +195,7 @@
                             android:weightSum="2">
 
                             <TextView
+                                android:id="@+id/diastole_high"
                                 style="@style/TextAppearance.MaterialComponents.Headline4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -201,6 +204,7 @@
                                 android:textColor="@color/warn" />
 
                             <TextView
+                                android:id="@+id/diastole_low"
                                 style="@style/TextAppearance.MaterialComponents.Headline4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -236,7 +240,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Systole - Last Month"
+                            android:text="Pulse - Last Month"
                             android:textAppearance="?attr/textAppearanceHeadline6" />
 
                         <View
@@ -278,6 +282,7 @@
                             android:weightSum="2">
 
                             <TextView
+                                android:id="@+id/pulse_high"
                                 style="@style/TextAppearance.MaterialComponents.Headline4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -286,6 +291,7 @@
                                 android:textColor="@color/warn" />
 
                             <TextView
+                                android:id="@+id/pulse_low"
                                 style="@style/TextAppearance.MaterialComponents.Headline4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

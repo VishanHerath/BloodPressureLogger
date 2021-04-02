@@ -117,8 +117,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                getSupportFragmentManager().popBackStackImmediate (null, 0);
-
                 if (item.getItemId() == R.id.item1) {
                     getSupportFragmentManager().beginTransaction()
                             .setCustomAnimations(
@@ -129,6 +127,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             )
                             .replace(R.id.container_fragment, new HomeFragment())
                             .commit();
+                    getSupportFragmentManager().popBackStackImmediate(null, 0);
+
                 }
                 if (item.getItemId() == R.id.item2) {
                     getSupportFragmentManager().beginTransaction()
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 }
             }
-        }, 450);
+        }, 350);
 
 
         return true;
