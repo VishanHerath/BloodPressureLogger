@@ -45,7 +45,7 @@ public class SettingsActivity extends AppCompatActivity implements SharedPrefere
             }
         }
         if (key.equals("name")) {
-            Toast.makeText(getApplicationContext(), "Changes Will Occur next time you Open the App", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Changes will occur next time you launch the pulze", Toast.LENGTH_LONG).show();
         }
     }
 
