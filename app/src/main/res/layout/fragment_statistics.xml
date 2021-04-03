@@ -311,29 +311,54 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="340dp"
         android:layout_margin="8dp"
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         app:strokeWidth="1dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/overview"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
-
-            <!-- Media -->
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/activity_main_lineChart"
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:weightSum="2"
                 android:layout_width="match_parent"
-                android:layout_height="300dp" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/filter_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/all"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <TextView
+                    android:gravity="end"
+                    android:layout_weight="1"
+                    android:id="@+id/filter_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textAppearance="?attr/textAppearanceCaption" />
+            </LinearLayout>
+
+
+            <ListView
+                android:layout_marginTop="8dp"
+                android:id="@+id/statListView"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:smoothScrollbar="true" />
+
         </LinearLayout>
 
+
     </com.google.android.material.card.MaterialCardView>
+
 </LinearLayout>
