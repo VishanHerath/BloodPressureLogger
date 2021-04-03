@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
 
         pressureModelArrayList = databaseHelper.getPressure();
 
-        lineChartHelper = new LineChartHelper(lineChart,pressureModelArrayList);
+        lineChartHelper = new LineChartHelper(lineChart, pressureModelArrayList);
 
         lineChartHelper.showLineChart();
         for (PressureModel model : pressureModelArrayList) {
@@ -75,9 +75,14 @@ public class HomeFragment extends Fragment {
         Collections.reverse(pressureModelArrayList);
 
         ArrayList<PressureModel> homeModel = new ArrayList<>();
-        homeModel.add(pressureModelArrayList.get(0));
-        homeModel.add(pressureModelArrayList.get(1));
-        customAdapter = new PressureListAdapter(getContext(), homeModel);
+        if (!pressureModelArrayList.isEmpty()) {
+            homeModel.add(pressureModelArrayList.get(0));
+            homeModel.add(pressureModelArrayList.get(1));
+            customAdapter = new PressureListAdapter(getContext(), homeModel);
+        } else {
+            customAdapter = new PressureListAdapter(getContext(), pressureModelArrayList);
+        }
+
         homeListView.setAdapter(customAdapter);
 
 
@@ -142,9 +147,9 @@ public class HomeFragment extends Fragment {
 
                 builder.setMessage(
                         "Systole: " + item.getSystolic() + "\n" +
-                        "Diastole: " + item.getDiastolic() + "\n" +
-                        "Pulse: " + item.getPulse() + "\n" +
-                        "Notes: " + item.getNotes());
+                                "Diastole: " + item.getDiastolic() + "\n" +
+                                "Pulse: " + item.getPulse() + "\n" +
+                                "Notes: " + item.getNotes());
 
                 builder.setTitle(item.getDatetime());
                 builder.show();
