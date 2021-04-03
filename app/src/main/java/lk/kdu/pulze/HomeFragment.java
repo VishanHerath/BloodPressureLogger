@@ -73,7 +73,11 @@ public class HomeFragment extends Fragment {
         }
 
         Collections.reverse(pressureModelArrayList);
-        customAdapter = new PressureListAdapter(getContext(), pressureModelArrayList);
+
+        ArrayList<PressureModel> homeModel = new ArrayList<>();
+        homeModel.add(pressureModelArrayList.get(0));
+        homeModel.add(pressureModelArrayList.get(1));
+        customAdapter = new PressureListAdapter(getContext(), homeModel);
         homeListView.setAdapter(customAdapter);
 
 
