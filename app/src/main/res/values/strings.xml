@@ -10,14 +10,14 @@
     <!-- Intro Page -->
     <string name="headText">Welcome to Pulze</string>
     <string name="descriptionText">This is a blood pressure logger app</string>
-    <string name="discover">Discover</string>
-    <string name="shop">Shop</string>
-    <string name="offers">Offers</string>
-    <string name="reward">Reward</string>
-    <string name="discover_text">Look for things around you</string>
-    <string name="shop_text"><![CDATA[Get the best deals & Coupons]]></string>
-    <string name="offers_text">Find great offers while you discover</string>
-    <string name="reward_text">Rewards something</string>
+    <string name="record">Record</string>
+    <string name="track">Track Data</string>
+    <string name="manage_recs">Manage Records</string>
+    <string name="highlow">Highest and Lowest</string>
+    <string name="record_text">Record your Systole, Diastole and Pulse values</string>
+    <string name="track_text">Charts to track your data</string>
+    <string name="manage_recs_text">Manage records and add notes</string>
+    <string name="highlow_text">Highest and Lowest in Systole, Diastole and Pulse values</string>
     <string name="textLabel">Name</string>
     <string name="dropdownLabel">Gender</string>
     <string name="start_pulze">Start Pulze</string>
