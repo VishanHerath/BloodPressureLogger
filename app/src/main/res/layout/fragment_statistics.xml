@@ -49,6 +49,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:clickable="true"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp">
 
@@ -136,6 +137,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:clickable="true"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp">
 
@@ -223,6 +225,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:clickable="true"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp">
 
@@ -308,20 +311,54 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="340dp"
         android:layout_margin="8dp"
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         app:strokeWidth="1dp">
-        <ListView
-            android:id="@+id/pressuresListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/list_coordinator"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_gravity="bottom" />
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/filter_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/all"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <TextView
+                    android:gravity="end"
+                    android:layout_weight="1"
+                    android:id="@+id/filter_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textAppearance="?attr/textAppearanceCaption" />
+            </LinearLayout>
+
+
+            <ListView
+                android:layout_marginTop="8dp"
+                android:id="@+id/statListView"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:smoothScrollbar="true" />
+
+        </LinearLayout>
+
 
     </com.google.android.material.card.MaterialCardView>
+
 </LinearLayout>

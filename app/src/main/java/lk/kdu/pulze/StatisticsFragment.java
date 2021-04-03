@@ -1,26 +1,21 @@
 package lk.kdu.pulze;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
-import com.github.mikephil.charting.charts.LineChart;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.chip.Chip;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,7 +32,9 @@ import lk.kdu.pulze.model.PressureModel;
 public class StatisticsFragment extends Fragment {
     private ExtendedFloatingActionButton extendedFloatingActionButton;
     private MaterialToolbar toolbar;
-    private TextView sys_high, sys_low, dia_high, dia_low, pul_high, pul_low;
+    private ListView statListView;
+    private PressureListAdapter customAdapter;
+    private TextView sys_high, sys_low, dia_high, dia_low, pul_high, pul_low, filter, filterSize;
     private DatabaseHelper databaseHelper;
     private ArrayList<PressureModel> pressureModelArrayList;
     private Chip all, month, three_month;
@@ -46,11 +43,7 @@ public class StatisticsFragment extends Fragment {
     private ArrayList<PressureModel> lastThreeMonthArray = new ArrayList<>();
     private PressureModel maxSys, minSys, maxDia, minDia, maxPul, minPul;
 
-    ListView pressuresListView;
-    private PressureListAdapter customAdapter;
-    LineChart lineChart;
-    private CoordinatorLayout listCoordinator;
-
+    @SuppressLint("ClickableViewAccessibility")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,6 +56,12 @@ public class StatisticsFragment extends Fragment {
         pul_high = v.findViewById(R.id.pulse_high);
         pul_low = v.findViewById(R.id.pulse_low);
 
+        filter = v.findViewById(R.id.filter_text);
+        filterSize = v.findViewById(R.id.filter_size);
+
+        statListView = v.findViewById(R.id.statListView);
+
+
         all = v.findViewById(R.id.all_chip);
         month = v.findViewById(R.id.last_month_chip);
         three_month = v.findViewById(R.id.last_three_month_chip);
@@ -71,23 +70,6 @@ public class StatisticsFragment extends Fragment {
         databaseHelper = new DatabaseHelper(getContext());
         pressureModelArrayList = databaseHelper.getPressure();
         Date current = new Date();
-
-        //Records ListView
-        listCoordinator = v.findViewById(R.id.list_coordinator);
-        pressuresListView = v.findViewById(R.id.pressuresListView);
-        lineChart = v.findViewById(R.id.activity_main_lineChart);
-        customAdapter = new PressureListAdapter(getContext(), pressureModelArrayList);
-        pressuresListView.setAdapter(customAdapter);
-        customAdapter.notifyDataSetChanged();
-
-        pressuresListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Snackbar.make(listCoordinator, String.valueOf(position), Snackbar.LENGTH_LONG).show();
-            }
-        });
-        //Records ListView
-
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             LocalDate thisMonth = LocalDate.now();
@@ -117,6 +99,11 @@ public class StatisticsFragment extends Fragment {
         setAllSelected();
         updateText();
 
+        //By Default Display All records
+        customAdapter = new PressureListAdapter(getContext(), pressureModelArrayList);
+        statListView.setAdapter(customAdapter);
+        filterSize.setText(pressureModelArrayList.size() + " Records");
+
 
         all.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +111,11 @@ public class StatisticsFragment extends Fragment {
                 resetValues();
                 setAllSelected();
                 updateText();
+                customAdapter = new PressureListAdapter(getContext(), pressureModelArrayList);
+                statListView.setAdapter(customAdapter);
+                filter.setText("All");
+                filterSize.setText(pressureModelArrayList.size() + " Records");
+                refreshListView();
             }
         });
 
@@ -133,6 +125,11 @@ public class StatisticsFragment extends Fragment {
                 resetValues();
                 setMonthSelected();
                 updateText();
+                customAdapter = new PressureListAdapter(getContext(), lastMonthArray);
+                statListView.setAdapter(customAdapter);
+                filter.setText("Last 30 Days");
+                filterSize.setText(lastMonthArray.size() + " Records");
+                refreshListView();
             }
         });
 
@@ -142,6 +139,21 @@ public class StatisticsFragment extends Fragment {
                 resetValues();
                 setLastThreeMonthsSelected();
                 updateText();
+                customAdapter = new PressureListAdapter(getContext(), lastThreeMonthArray);
+                statListView.setAdapter(customAdapter);
+                filter.setText("Last 90 Days");
+                filterSize.setText(lastThreeMonthArray.size() + " Records");
+                refreshListView();
+            }
+        });
+
+        statListView.setOnTouchListener(new View.OnTouchListener() {
+            // Setting on Touch Listener for handling the touch inside ScrollView
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Disallow the touch request for parent scroll on touch of child view
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
             }
         });
 
@@ -370,6 +382,12 @@ public class StatisticsFragment extends Fragment {
             pul_high.setText(String.valueOf(maxPul.getPulse()));
             pul_low.setText(String.valueOf(minPul.getPulse()));
         }
+    }
+
+    private void refreshListView() {
+        customAdapter.notifyDataSetChanged();
+        statListView.invalidateViews();
+        statListView.refreshDrawableState();
     }
 
     @SuppressLint("SetTextI18n")
