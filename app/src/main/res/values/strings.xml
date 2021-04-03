@@ -55,4 +55,5 @@
     <string name="add_note">Add Note</string>
     <string name="lowest">Lowest</string>
     <string name="highest">Highest</string>
+    <string name="filter">Filter</string>
 </resources>

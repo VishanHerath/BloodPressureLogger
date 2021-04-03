@@ -66,11 +66,7 @@ public class ViewPressureList extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         PressureModel item = (PressureModel) pressureModelArrayList.get(pos);
                         databaseHelper.deletePressure(item.getId());
-                        pressureModelArrayList.clear();
-                        pressureModelArrayList.addAll(databaseHelper.getPressure());
-                        customAdapter.notifyDataSetChanged();
-                        pressuresListView.invalidateViews();
-                        pressuresListView.refreshDrawableState();
+                        refreshListView();
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -87,6 +83,14 @@ public class ViewPressureList extends AppCompatActivity {
         });
 
 
+    }
+
+    private void refreshListView() {
+        pressureModelArrayList.clear();
+        pressureModelArrayList.addAll(databaseHelper.getPressure());
+        customAdapter.notifyDataSetChanged();
+        pressuresListView.invalidateViews();
+        pressuresListView.refreshDrawableState();
     }
 
     @Override
