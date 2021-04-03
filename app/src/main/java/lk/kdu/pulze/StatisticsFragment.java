@@ -1,19 +1,26 @@
 package lk.kdu.pulze;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
+import com.github.mikephil.charting.charts.LineChart;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +30,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
+import lk.kdu.pulze.adapter.PressureListAdapter;
 import lk.kdu.pulze.helper.DatabaseHelper;
 import lk.kdu.pulze.model.PressureModel;
 
@@ -37,6 +45,11 @@ public class StatisticsFragment extends Fragment {
     private ArrayList<PressureModel> lastMonthArray = new ArrayList<>();
     private ArrayList<PressureModel> lastThreeMonthArray = new ArrayList<>();
     private PressureModel maxSys, minSys, maxDia, minDia, maxPul, minPul;
+
+    ListView pressuresListView;
+    private PressureListAdapter customAdapter;
+    LineChart lineChart;
+    private CoordinatorLayout listCoordinator;
 
     @Nullable
     @Override
@@ -58,6 +71,23 @@ public class StatisticsFragment extends Fragment {
         databaseHelper = new DatabaseHelper(getContext());
         pressureModelArrayList = databaseHelper.getPressure();
         Date current = new Date();
+
+        //Records ListView
+        listCoordinator = v.findViewById(R.id.list_coordinator);
+        pressuresListView = v.findViewById(R.id.pressuresListView);
+        lineChart = v.findViewById(R.id.activity_main_lineChart);
+        customAdapter = new PressureListAdapter(getContext(), pressureModelArrayList);
+        pressuresListView.setAdapter(customAdapter);
+        customAdapter.notifyDataSetChanged();
+
+        pressuresListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Snackbar.make(listCoordinator, String.valueOf(position), Snackbar.LENGTH_LONG).show();
+            }
+        });
+        //Records ListView
+
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             LocalDate thisMonth = LocalDate.now();
