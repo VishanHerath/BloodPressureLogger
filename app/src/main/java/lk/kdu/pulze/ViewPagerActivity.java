@@ -7,14 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
-
 import lk.kdu.pulze.adapter.SliderPagerAdapter;
 
 public class ViewPagerActivity extends AppCompatActivity {

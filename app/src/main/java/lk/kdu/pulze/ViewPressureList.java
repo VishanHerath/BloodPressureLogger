@@ -6,16 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-
 import com.github.mikephil.charting.charts.LineChart;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
-
 import java.util.ArrayList;
-
 import lk.kdu.pulze.adapter.PressureListAdapter;
 import lk.kdu.pulze.helper.DatabaseHelper;
 import lk.kdu.pulze.model.PressureModel;

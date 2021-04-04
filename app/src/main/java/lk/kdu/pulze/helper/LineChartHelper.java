@@ -1,7 +1,6 @@
 package lk.kdu.pulze.helper;
 
 import android.graphics.Color;
-
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -10,19 +9,16 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-
 import java.util.ArrayList;
-
 import lk.kdu.pulze.model.PressureModel;
 
 public class LineChartHelper implements OnChartValueSelectedListener {
 
     private LineChart lineChart;
-    private  ArrayList<PressureModel> pressureModels;
+    private ArrayList<PressureModel> pressureModels;
 
     public LineChartHelper(LineChart lineChart, ArrayList<PressureModel> models) {
         this.lineChart = lineChart;
@@ -65,7 +61,7 @@ public class LineChartHelper implements OnChartValueSelectedListener {
         // get the legend (only possible after setting data)
         Legend l = lineChart.getLegend();
         //Increase Legend Gap
-        lineChart.setExtraOffsets(0f,0f,0f,15f);
+        lineChart.setExtraOffsets(0f, 0f, 0f, 15f);
         // modify the legend ...
         l.setForm(Legend.LegendForm.LINE);
         l.setTextColor(Color.GRAY);
@@ -77,7 +73,6 @@ public class LineChartHelper implements OnChartValueSelectedListener {
         xl.setAvoidFirstLastClipping(true);
         xl.setEnabled(true);
         xl.setGranularity(1);
-
 
 
 //        ValueFormatter valueFormatter = new ValueFormatter() {
