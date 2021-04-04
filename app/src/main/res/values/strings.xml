@@ -14,10 +14,10 @@
     <string name="track">Track Data</string>
     <string name="manage_recs">Manage Records</string>
     <string name="highlow">Highest and Lowest</string>
-    <string name="record_text">Record your Systole, Diastole and Pulse values</string>
+    <string name="record_text">Record Systole, Diastole and Pulse</string>
     <string name="track_text">Charts to track your data</string>
     <string name="manage_recs_text">Manage records and add notes</string>
-    <string name="highlow_text">Highest and Lowest in Systole, Diastole and Pulse values</string>
+    <string name="highlow_text">High and Low in Systole, Diastole and Pulse</string>
     <string name="textLabel">Name</string>
     <string name="dropdownLabel">Gender</string>
     <string name="start_pulze">Start Pulze</string>
