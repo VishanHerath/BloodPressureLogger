@@ -324,36 +324,36 @@
             android:padding="16dp">
 
             <LinearLayout
-                android:layout_margin="8dp"
-                android:weightSum="2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <TextView
-                    android:layout_weight="1"
                     android:id="@+id/filter_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/all"
                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
-                    android:gravity="end"
-                    android:layout_weight="1"
                     android:id="@+id/filter_size"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
                     android:text="1"
                     android:textAppearance="?attr/textAppearanceCaption" />
             </LinearLayout>
 
 
             <ListView
-                android:layout_marginTop="8dp"
                 android:id="@+id/statListView"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
+                android:layout_marginTop="8dp"
                 android:smoothScrollbar="true" />
 
         </LinearLayout>

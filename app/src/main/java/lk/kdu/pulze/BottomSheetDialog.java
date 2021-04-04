@@ -22,20 +22,16 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-
 import com.github.mikephil.charting.charts.LineChart;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 import lk.kdu.pulze.helper.DatabaseHelper;
 
 public class BottomSheetDialog extends BottomSheetDialogFragment {
