@@ -76,8 +76,13 @@ public class HomeFragment extends Fragment {
 
         ArrayList<PressureModel> homeModel = new ArrayList<>();
         if (!pressureModelArrayList.isEmpty()) {
-            homeModel.add(pressureModelArrayList.get(0));
-            homeModel.add(pressureModelArrayList.get(1));
+            if (pressureModelArrayList.size() < 2) {
+                homeModel.add(pressureModelArrayList.get(0));
+            }
+            else{
+                homeModel.add(pressureModelArrayList.get(0));
+                homeModel.add(pressureModelArrayList.get(1));
+            }
             customAdapter = new PressureListAdapter(getContext(), homeModel);
         } else {
             customAdapter = new PressureListAdapter(getContext(), pressureModelArrayList);
