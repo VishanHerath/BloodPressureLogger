@@ -20,7 +20,6 @@
             android:background="@drawable/toolbar_background"
             android:elevation="4dp"
             app:layout_scrollFlags="enterAlways|snap"
-            app:menu="@menu/top_app_bar"
             app:title="@string/app_name"
             tools:targetApi="lollipop" />
 
